@@ -1,5 +1,3 @@
-<!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -18,7 +16,6 @@
 <body>
   <h1>Senior Design Conference Judge Evaluation Form</h1>
   <hr/>
-
   Judge ID: <br>
   Judge Name: <br>
   <form action="form3.html">
