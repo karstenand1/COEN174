@@ -18,7 +18,7 @@
       return;
       }
 
-    $sql = "SELECT student FROM Students WHERE PID='$_POST[pid]'";
+    $sql = "SELECT PID, roomNum, pTitle FROM Presentations WHERE sessionNo='$_POST[session]' AND dept='$_POST[department]'";
 
     // $sql = "SELECT * FROM Comments ORDER BY date_added DESC LIMIT 10";
 
