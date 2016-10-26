@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shane's View</title>
+
+<style>
+.button {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 32px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button1 
+{
+	border-radius: 12px;
+	width: 50%;
+}
+
+</style>
+
+</head>
+<body>
+
+<div align="center">
+
+<h1>Senior Design Conference Administrator Portal</h1>
+
+<button class="button button1" style="vertical-align:middle"><span><a href="Summary_Score_Report.html">View Summary Score Report</a></span></button>
+
+<button class="button button1" style="vertical-align:middle"><span><a href="Detailed_Score_Report.html"> View Detailed Score Reports</a></span></button>
+
+</div>
+ 
+</body>
+</html>

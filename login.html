@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 15%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button1 
+{
+    border-radius: 12px;
+    width: 10%;
+}
+
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+</style>
+<body>
+
+<div align="center">
+
+<h2>Login</h2>
+
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+</div>
+
+<div>
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+ </div>       
+
+<div>
+<button class="button button1" style="vertical-align:middle" type="submit"><span>Login</a></span></button>
+    
+</div>
+<div>
+    <input type="checkbox" > Remember me
+  </div>
+
+</form>
+
+</div>
+
+</body>
+</html>
+
