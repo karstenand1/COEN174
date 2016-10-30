@@ -18,7 +18,7 @@
       return;
       }
 
-    $sql = "SELECT PID, pTitle, dept FROM Presentations";
+    $sql = "SELECT Presentations.PID, pTitle, dept, advisor, student FROM Presentations INNER JOIN Students ON Presentations.PID=Students.PID";
 
     // $sql = "SELECT * FROM Comments ORDER BY date_added DESC LIMIT 10";
 
