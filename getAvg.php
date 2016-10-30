@@ -18,7 +18,7 @@
       return;
       }
 
-    $sql = "SELECT student, advisor FROM Students INNER JOIN Presentations ON Students.PID=Presentations.PID WHERE PID='$_GET[PID]'";
+    $sql = "SELECT sessionNo, COUNT( DISTINCT judgeName ) AS judgeAmount, AVG( DP1 + DP2 + DP3 + DP4 + DP5 + DP6 + DP7 + DP8 + C1 + C2 + C3 + C4) AS avgScore FROM Presentations INNER JOIN Scores ON Presentations.PID = Scores.PID";
 
     // $sql = "SELECT * FROM Comments ORDER BY date_added DESC LIMIT 10";
 
