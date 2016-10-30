@@ -60,7 +60,7 @@
 
 
 
-      var jID = getUrlVars()["judgeID"];
+      var jID = getUrlVars()["judgeId"];
       var jName = getUrlVars()["judgeName"];
       var project = getUrlVars()["project"];
       var session = getUrlVars()["session"];
@@ -75,7 +75,7 @@
 
       var presScores= getUrlVars();
       presScores.project=  noplus(presScores.project);
-      presScores.PID=noplus(presScores.PID);
+      presScores.PID=parseInt(noplus(presScores.PID));
       var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
       $.each(cons, function(index, element) {
         if (!(element in presScores)) {

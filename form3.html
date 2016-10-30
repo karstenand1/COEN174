@@ -61,7 +61,7 @@
       </tr>
       <tr>
         <td>Advisor:</td>
-        <td id="Advisor"></td>
+        <td id="advisor"></td>
       </tr>
     </table>
     
@@ -245,7 +245,7 @@
      <br/>
 
      <!-- <button > Save </button> -->
-     <input type="hidden" id= "jIDhidden" name="judgeID" >
+     <input type="hidden" id= "jIDhidden" name="judgeId" >
      <input type="hidden" id="jNamehidden" name="judgeName" >
      <input type="hidden" id= "sessionhidden" name="session" >
      <input type="hidden" id="roomhidden" name="room" >
@@ -260,7 +260,7 @@
    <script src="geturl.js"></script>
 
    <script>
-    var jID = getUrlVars()["judgeID"];
+   var jID = getUrlVars()["judgeId"];
     var jName = getUrlVars()["judgeName"];
     var projectRaw = getUrlVars()["project"];
     var session = getUrlVars()["session"];
@@ -273,7 +273,7 @@
     console.log(projlist);
 
     project=projlist[0];
-    PID=projlist[1];
+    PID=$.trim(projlist[1]);
 
     document.getElementById('jID').innerHTML= jID;
     document.getElementById('jName').innerHTML= jName;
@@ -299,11 +299,13 @@
       success: function(response){
         console.log(response);
         document.getElementById('members').innerHTML= response[0].student;
+        document.getElementById('advisor').innerHTML=response[0].advisor;
+
         //FIGURE OUT HOW TO DISPLAY MORE THAN ONE TEAM MEMBER
 
 
         document.getElementById('teamhidden').value= members;
-        document.getElementById('advisorhidden').value= advisor;
+        document.getElementById('advisorhidden').value= response[0].advisor;
         // document.getElementById('projects').innerHTML=populateList(response);
         // document.getElementById('sessionhidden').value= deplist[department] + "-" + session;
         // document.getElementById('roomhidden').value= response[0].roomNum;
