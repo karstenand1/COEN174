@@ -26,9 +26,13 @@
         <td>Judge Name:</td>
         <td id="jName"></td>
       </tr>
+      <tr>
         <td>Session:</td>
         <td id="session"></td>
+      </tr>
       <tr>
+        <td>Room:</td>
+        <td id="room"></td>
       </tr>
 
     </table>
@@ -38,61 +42,64 @@
       <datalist id="projects">
 <!--         <option value="val1">
         <option value="val2">
-        <option value="val3"> -->
-      </datalist>
-      <input type="hidden" id= "jID" name="judgeID" >
-      <input type="hidden" id="jName" name="judgeName">
+          <option value="val3"> -->
+          </datalist>
+          <input type="hidden" id= "jIDhidden" name="judgeID" >
+          <input type="hidden" id="jNamehidden" name="judgeName" >
+          <input type="hidden" id= "sessionhidden" name="session" >
+          <input type="hidden" id="roomhidden" name="room" >
+          <input type="submit" value="Submit">
+        </form>
+        <script src="geturl.js"></script>
 
-      <input type="submit" value="Submit">
-    </form>
-    <script src="geturl.js"></script>
+        <script>
 
-    <script>
-
-      var jID = getUrlVars()["judgeID"];
-      var jName = getUrlVars()["judgeName"];
-
-
-      document.getElementById('jID').innerHTML= jID;
-      document.getElementById('jName').innerHTML= jName;
-
-      var splitID= jID.split("-");
-      var department= splitID[0];
-      var session= splitID[1];
-      var judge= splitID[2];
-
-      var deplist=['COEN', 'MECH', 'CIVIL', 'BIO', 'ELEN', 'INTER', 'WEB'] ;    
-
-      document.getElementById('session').innerHTML= deplist[department] + " " + session;
+          var jID = getUrlVars()["judgeID"];
+          var jName = getUrlVars()["judgeName"];
 
 
-      $.ajax({
-        type:'GET',
-        url:'getPresentations.php',
-        data:{department: department, session: session},
-        dataType:'json',
-        success: function(response){
-            console.log(response);
-        //     document.getElementById('projects').innerHTML=populateList(response);
-        // }
-      });
+          document.getElementById('jID').innerHTML= jID;
+          document.getElementById('jName').innerHTML= jName;
+
+          document.getElementById('jIDhidden').value= jID;
+          document.getElementById('jNamehidden').value= jName;
+
+
+          var splitID= jID.split("-");
+          var department= splitID[0];
+          var session= splitID[1];
+          var judge= splitID[2];
+
+          var deplist=['COEN', 'MECH', 'CIVIL', 'BIO', 'ELEN', 'INTER', 'WEB'] ;    
+
+          document.getElementById('session').innerHTML= deplist[department] + " " + session;
+
+          $.ajax({
+            type:'GET',
+            url:'getPres.php',
+            data:{department: deplist[department], session: session},
+            dataType:'json',
+            success: function(response){
+              console.log(response)
+              document.getElementById('room').innerHTML= response[0].roomNum;
+              document.getElementById('projects').innerHTML=populateList(response);
+              document.getElementById('sessionhidden').value= deplist[department] + "-" + session;
+              document.getElementById('roomhidden').value= response[0].roomNum;
+            }
+          });
 
       // document.getElementById('projects').innerHTML=populateList(["hello","hello"]);
 
-      // function populateList(list){
-      //     var option="<option value="+ "hello" + ">";
-
-      //     $.each(["hello", "hello"], function(index, element) {
-      //         console.log("hello");
-      //         var line=["<option value=&quot;", "hello" , "&quot;>"].join(" ");
-      //         option.concat(line, "\n");
-      //         console.log(option);
-
-      //     })
-      //     console.log(option);
-      //     return option;
-      // }
+      function populateList(list){
+        var option="";
+        $.each(list, function(index, element) {
+          var proj= element.pTitle +"-"+ element.PID;
+          var line=["<option value=\"", proj, "\">"].join(" ");
+          option=option.concat(line, "\n");
+        })
+        return option;
+      }
 
     </script>
   </body>
-</html>
+  </html>

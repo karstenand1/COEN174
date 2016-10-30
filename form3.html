@@ -37,14 +37,33 @@
         <td>Judge ID: </td>
         <td id= "jID"> </td>
       </tr>
-      <td>Judge Name:</td>
-      <td id="jName"></td>
+      <tr>
+        <td>Judge Name:</td>
+        <td id="jName"></td>
+      </tr>
+      <tr>
+        <td>Session:</td>
+        <td id="session"></td>
+      </tr>
+      <tr>
+        <td>Room:</td>
+        <td id="room"></td>
+      </tr>
       <tr>
       </tr>
-
+      <tr>
+        <td>Project Name:</td>
+        <td id="project"></td>
+      </tr>
+      <tr>
+        <td>Team Members:</td>
+        <td id="members"></td>
+      </tr>
+      <tr>
+        <td>Advisor:</td>
+        <td id="Advisor"></td>
+      </tr>
     </table>
-
-    Project Title: <br>
     
     <hr/>
     <p>
@@ -197,45 +216,103 @@
         2) Please select each of the following considerations that were addressed by the presentation:
       </p>
       <table>
-      <tr>
-        <td><input type="checkbox"  name="C1" value="Economic">Economic</td>
-        <td><input type="checkbox"  name="C2" value="Sustainability">Sustainability</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"  name="C3" value="Ethical">Ethical</td>
-        <td><input type="checkbox"  name="C4" value="Social">Social</td>
-      </tr>
-            <tr>
-        <td><input type="checkbox"  name="C5" value="Environmental">Environmental</td>
-        <td><input type="checkbox"  name="C6" value="Manufacturability">Manufacturability</td>
-      </tr>
-            <tr>
-        <td><input type="checkbox"  name="C7" value="Health">Health and Safety</td>
-        <td><input type="checkbox"  name="C8" value="Political">Political</td>
-      </tr>
+        <tr>
+          <td><input type="checkbox"  name="C1" value="1">Economic</td>
+          <td><input type="checkbox"  name="C2" value="1">Sustainability</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"  name="C3" value="1">Ethical</td>
+          <td><input type="checkbox"  name="C4" value="1">Social</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"  name="C5" value="1">Environmental</td>
+          <td><input type="checkbox"  name="C6" value="1">Manufacturability</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"  name="C7" value="1">Health and Safety</td>
+          <td><input type="checkbox"  name="C8" value="1">Political</td>
+        </tr>
       </table>
 
 
 
       <p>
-       3) Additional Comments:
+       3) Additional Comments  (Limit 255 chars):
      </p>
 
-     <input type="text" name="comments"> <br/>
-     <button > Save </button>
+     <input type="text" name="comments" maxlength="255"> <br/>
 
-     <input type="submit" value="Submit">
+     <br/>
+
+     <!-- <button > Save </button> -->
+     <input type="hidden" id= "jIDhidden" name="judgeID" >
+     <input type="hidden" id="jNamehidden" name="judgeName" >
+     <input type="hidden" id= "sessionhidden" name="session" >
+     <input type="hidden" id="roomhidden" name="room" >
+     <input type="hidden" id="projecthidden" name="project" >
+     <input type="hidden" id="teamhidden" name="team" >
+     <input type="hidden" id="advisorhidden" name="advisor" >
+     <input type="hidden" id="PID" name="PID" >
+
+     <input type="submit" value="Confirm Submit">
 
    </form>
-       <script src="geturl.js"></script>
+   <script src="geturl.js"></script>
 
-    <script>
+   <script>
+    var jID = getUrlVars()["judgeID"];
+    var jName = getUrlVars()["judgeName"];
+    var projectRaw = getUrlVars()["project"];
+    var session = getUrlVars()["session"];
+    var room = getUrlVars()["room"];
+    console.log(projectRaw);
+    projectRaw= noplus(projectRaw);
 
-      var first = getUrlVars()["judgeID"];
-      var second = getUrlVars()["judgeName"];
-      document.getElementById('jID').innerHTML= first;
-      document.getElementById('jName').innerHTML= second;
-    </script>
 
- </body>
- </html>
+    projlist=projectRaw.split("-");
+    console.log(projlist);
+
+    project=projlist[0];
+    PID=projlist[1];
+
+    document.getElementById('jID').innerHTML= jID;
+    document.getElementById('jName').innerHTML= jName;
+    document.getElementById('project').innerHTML= project;
+    document.getElementById('session').innerHTML= session;
+    document.getElementById('room').innerHTML= room;
+
+    document.getElementById('jIDhidden').value= jID;
+    document.getElementById('jNamehidden').value= jName;
+    document.getElementById('sessionhidden').value= session;
+    document.getElementById('roomhidden').value= room;
+    document.getElementById('projecthidden').value= project;
+
+
+    document.getElementById('PID').value= PID;
+
+
+    $.ajax({
+      type:'GET',
+      url:'getStudents.php',
+      data:{PID: PID},
+      dataType:'json',
+      success: function(response){
+        console.log(response);
+        document.getElementById('members').innerHTML= response[0].student;
+        //FIGURE OUT HOW TO DISPLAY MORE THAN ONE TEAM MEMBER
+
+
+        document.getElementById('teamhidden').value= members;
+        document.getElementById('advisorhidden').value= advisor;
+        // document.getElementById('projects').innerHTML=populateList(response);
+        // document.getElementById('sessionhidden').value= deplist[department] + "-" + session;
+        // document.getElementById('roomhidden').value= response[0].roomNum;
+      }
+    });
+
+    // NEED TO SUBMIT PID OVER TO NEXT PAGE
+
+  </script>
+
+</body>
+</html>
