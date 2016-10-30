@@ -10,18 +10,101 @@
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
-</head>
+    <![endif]-->
+  </head>
 
-<body>
-  <h1>Senior Design Conference Judge Evaluation Form Submitted!</h1>
-  <hr/>
+  <body>
+    <h1>Confirm submit Senior Design Conference Judge Evaluation Form</h1>
+    <hr/>
 
-  Judge ID: <br>
-  Judge Name: <br>
-  Presentation: <br>
-  Total Score: <br>
-  <script src="js/scripts.js"></script>
+    <table>
+      <tr>
+        <td>Judge ID: </td>
+        <td id= "jID"> </td>
+      </tr>
+      <tr>
+        <td>Judge Name:</td>
+        <td id="jName"></td>
+      </tr>
+      <tr>
+        <td>Session:</td>
+        <td id="session"></td>
+      </tr>
+      <tr>
+        <td>Room:</td>
+        <td id="room"></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td>Project Name:</td>
+        <td id="project"></td>
+      </tr>
+      <tr>
+        <td>Team Members:</td>
+        <td id="members"></td>
+      </tr>
+      <tr>
+        <td>Advisor:</td>
+        <td id="Advisor"></td>
+      </tr>
+    </table>
 
-</body>
-</html>
+    <button onclick="sendScores()">Submit Scores</button>
+    <h3 id="success" style="display:none"> Submit successful</h3>
+
+    <script src="geturl.js"></script>
+
+
+    <script>
+
+
+
+      var jID = getUrlVars()["judgeId"];
+      var jName = getUrlVars()["judgeName"];
+      var project = getUrlVars()["project"];
+      var session = getUrlVars()["session"];
+      var room = getUrlVars()["room"];
+
+      document.getElementById('jID').innerHTML= jID;
+      document.getElementById('jName').innerHTML= jName;
+      document.getElementById('project').innerHTML= project;
+      document.getElementById('session').innerHTML= session;
+      document.getElementById('room').innerHTML= room;
+
+
+      var presScores= getUrlVars();
+      presScores.project=  noplus(presScores.project);
+      presScores.PID=parseInt(noplus(presScores.PID));
+      var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
+      $.each(cons, function(index, element) {
+        if (!(element in presScores)) {
+          presScores[element]= 0;
+        }
+      })
+
+      console.log(presScores);
+
+      function sendScores(){
+
+        $.ajax({
+          type:'POST',
+          url:'addScore.php',
+          data:presScores,
+          success: function(response){
+            console.log(response)
+            document.getElementById('success').style= "display:inline";
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+     alert("some error");
+  }
+        });
+
+      }
+
+
+
+    </script>
+
+  </body>
+  </html>

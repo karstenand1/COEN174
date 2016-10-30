@@ -18,7 +18,8 @@
       return;
       }
 
-    $sql = "SELECT student, advisor FROM Students INNER JOIN Presentations ON Students.PID=Presentations.PID WHERE PID='$_GET[PID]'";
+
+    $sql = "SELECT student, advisor FROM Students INNER JOIN Presentations ON Students.PID=Presentations.PID WHERE Students.PID='$_GET[PID]'";
 
     // $sql = "SELECT * FROM Comments ORDER BY date_added DESC LIMIT 10";
 
