@@ -32,6 +32,8 @@
   <body>
     <h1>Senior Design Detailed Score reports</h1>
     <hr/>
+    <div id="info">
+    </div>
     <div id="report">
     </div>
 
@@ -57,7 +59,8 @@
 
     function displayReport(data){
       var html="";
-      header+="<table><tr><th>"+ element.pTitle +"</th>"
+      header="";
+      header+="<table><tr><th><u>"+ data[0].pTitle +"</u></th>"
      $.each(data, function(index, element) {
           line=["<th>", noplus(element.judgeName) , "</th>"].join(" ");
           header=header.concat(line, "\n");
@@ -92,7 +95,14 @@
 
       }
 
-     var pid = noplus(getUrlVars()["PID"]);
+     var url = noplus(getUrlVars()["PID"]);
+     split= url.split("-")
+     console.log(split);
+     pid=split[0];
+     advisor=split[1];
+     team=split[2].replace(("%2C"),", ");
+    document.getElementById('info').innerHTML="Advisor: " +advisor+ "<br/> Team Members: " + team;
+
      getreport(pid);
 
   

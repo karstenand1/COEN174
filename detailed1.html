@@ -51,17 +51,23 @@
         if (!(element.PID in pres))
           {
             console.log(element.PID)
-            pres[element.PID]=element;}
+            pres[element.PID]=element;
+          }
+        else{
+            pres[element.PID].student+= ", "+ element.student;
+          }
         })
        console.log(pres)
 
        var html=""
        for (var key in pres) {
         if (pres.hasOwnProperty(key)) {
-          line=["<input type=\"radio\" required name=\"PID\" value=\"", pres[key].PID, "\">", pres[key].pTitle].join(" ");
+          fullval= pres[key].PID+"-"+ pres[key].advisor+"-"+ pres[key].student
+          line=["<input type=\"radio\" required name=\"PID\" value=\"", fullval, "\">", pres[key].pTitle,"-", pres[key].advisor, "-", pres[key].student, "<br/>"].join(" ");
           html+=line;
         }
       }
+      // var hiddenvals="<input type=\"hidden\" id=\"teamhidden\" name=\"team\" ><input type=\"hidden\" id=\"advisorhidden\" name=\"advisor\" >"
       document.getElementById('options').innerHTML=html+"<input type=\"submit\" value=\"Confirm Submit\">";
 
 
