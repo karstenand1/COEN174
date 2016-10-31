@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>Detailed Score Report</title>
+  <meta name="description" content="Judge Eval Form page 1">
+  <meta name="author" content="Group 1">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      table, td, th {
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        padding: 15px;
+        text-align: left;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Senior Design Detailed Score reports</h1>
+    <hr/>
+    <div id="report">
+    </div>
+
+    <script src="geturl.js"></script>
+
+    <script src="mappings.js"></script>
+
+    <script>
+
+
+     function getreport(pid){
+      $.ajax({
+        type:'GET',
+        url:'getDetRepSco.php',
+        data:{PID: pid},
+        dataType:'json',
+        success: function(response){
+
+          document.getElementById('report').innerHTML=displayReport(response);
+        }
+      });
+    }
+
+    function displayReport(data){
+      var html="";
+      header+="<table><tr><th>"+ element.pTitle +"</th>"
+     $.each(data, function(index, element) {
+          line=["<th>", noplus(element.judgeName) , "</th>"].join(" ");
+          header=header.concat(line, "\n");
+        })
+      
+     html= html+ header + "</tr>";
+     console.log(html);
+
+
+      for (var key in formMap) {
+         row="<tr>"
+        if (formMap.hasOwnProperty(key)) {
+           line=["<td>", formMap[key] , "</td>"].join(" ");
+           row=row.concat(line, "\n");
+
+          $.each(data, function(index, element) {
+            line=["<td>", noplus(element[key]) , "</td>"].join(" ");
+            row=row.concat(line, "\n");
+          })
+          html=html+row+"</tr>";
+          console.log(row);
+        }
+      }
+      line="<tr><td>Comments</td>"
+      $.each(data, function(index, element) {
+            line+=["<td>", element["comment"] , "</td>"].join(" ");
+       })
+      line=line+"</tr>"
+
+      html=html+line+"</table>"
+      return html;
+
+      }
+
+     var pid = noplus(getUrlVars()["PID"]);
+     getreport(pid);
+
+  
+
+
+  </script>
+
+</body>
+</html>

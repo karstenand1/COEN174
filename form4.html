@@ -11,10 +11,11 @@
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
+    
   </head>
 
   <body>
-    <h1>Confirm submit Senior Design Conference Judge Evaluation Form</h1>
+    <h1>Confirm Submit Senior Design Conference Judge Evaluation Form</h1>
     <hr/>
 
     <table>
@@ -46,12 +47,14 @@
       </tr>
       <tr>
         <td>Advisor:</td>
-        <td id="Advisor"></td>
+        <td id="advisor"></td>
       </tr>
     </table>
 
-    <button onclick="sendScores()">Submit Scores</button>
-    <h3 id="success" style="display:none"> Submit successful</h3>
+    <button id="sendbutton" onclick="sendScores()">Submit Scores</button>
+    <h3 id="success" style="display:none"> Submit Successful
+    <a href="form.html" class="button">Go to Home Form</a>
+    </h3>
 
     <script src="geturl.js"></script>
 
@@ -61,21 +64,29 @@
 
 
       var jID = getUrlVars()["judgeId"];
-      var jName = getUrlVars()["judgeName"];
-      var project = getUrlVars()["project"];
+      var jName = noplus(getUrlVars()["judgeName"]);
+      var project = noplus(getUrlVars()["project"]);
       var session = getUrlVars()["session"];
-      var room = getUrlVars()["room"];
+      var room = noplus(getUrlVars()["room"]);
+      var members = noplus(getUrlVars()["team"]);
+      var advisor = noplus(getUrlVars()["advisor"]);
+
 
       document.getElementById('jID').innerHTML= jID;
       document.getElementById('jName').innerHTML= jName;
       document.getElementById('project').innerHTML= project;
       document.getElementById('session').innerHTML= session;
       document.getElementById('room').innerHTML= room;
+      document.getElementById('members').innerHTML= members.replace(("%2C"), ", ");
+      document.getElementById('advisor').innerHTML= advisor;
+
 
 
       var presScores= getUrlVars();
       presScores.project=  noplus(presScores.project);
       presScores.PID=parseInt(noplus(presScores.PID));
+      presScores.comments=noplus(presScores.comments);
+
       var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
       $.each(cons, function(index, element) {
         if (!(element in presScores)) {
@@ -84,6 +95,10 @@
       })
 
       console.log(presScores);
+
+      $('sendbutton').on('click', function() {
+        $(this).prop('disabled', true);
+      });
 
       function sendScores(){
 
@@ -96,9 +111,9 @@
             document.getElementById('success').style= "display:inline";
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
-     alert("some error");
-  }
-        });
+           alert("some error");
+         }
+       });
 
       }
 

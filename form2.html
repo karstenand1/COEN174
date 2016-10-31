@@ -12,30 +12,34 @@
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="formstyle.css">
+
   </head>
 
   <body>
+  <div id="main">
     <h1>Senior Design Conference Judge Evaluation Form</h1>
     <hr/>
-    <table>
-      <tr>
-        <td>Judge ID: </td>
-        <td id= "jID"> </td>
-      </tr>
-      <tr>
-        <td>Judge Name:</td>
-        <td id="jName"></td>
-      </tr>
-      <tr>
-        <td>Session:</td>
-        <td id="session"></td>
-      </tr>
-      <tr>
-        <td>Room:</td>
-        <td id="room"></td>
-      </tr>
 
-    </table>
+        <table class="basictable">
+      <tr>
+        <td class="leftcol">Judge ID: </td>
+        <td class="rightcol" id= "jID"> </td>
+      </tr>
+      <tr>
+        <td class="leftcol">Judge Name:</td>
+        <td class="rightcol" id="jName"></td>
+      </tr>
+      <tr>
+        <td class="leftcol">Session:</td>
+        <td class="rightcol" id="session"></td>
+      </tr>
+      <tr>
+        <td class="leftcol">Room:</td>
+        <td class="rightcol" id="room"></td>
+      </tr>
+</table>
+
 
     <form action="form3.html">
       Project Title: <input list="projects" name="project"><br>
@@ -50,6 +54,7 @@
           <input type="hidden" id="roomhidden" name="room" >
           <input type="submit" value="Submit">
         </form>
+  </div>
         <script src="geturl.js"></script>
 
         <script>
@@ -59,16 +64,18 @@
 
 
           document.getElementById('jID').innerHTML= jID;
-          document.getElementById('jName').innerHTML= jName;
+          document.getElementById('jName').innerHTML= noplus(jName);
 
-          document.getElementById('jIDhidden').value= jID;
-          document.getElementById('jNamehidden').value= jName;
 
 
           var splitID= jID.split("-");
           var department= splitID[0];
           var session= splitID[1];
           var judge= splitID[2];
+
+
+          document.getElementById('jIDhidden').value=  judge;
+          document.getElementById('jNamehidden').value= noplus(jName);
 
           var deplist=['COEN', 'MECH', 'CIVIL', 'BIO', 'ELEN', 'INTER', 'WEB'] ;    
 

@@ -1,0 +1,43 @@
+  #main{
+  	width:90%;
+  	margin-left: auto;
+  	margin-right:auto;
+  	text-align: center;
+  }
+
+  table{
+  	  	margin-left: auto;
+  	margin-right:auto;
+  }
+      table, td, th {
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        padding: 15px;
+        text-align: left;
+      }
+      .toptable{
+        max-width:400px;
+      }
+      .leftcol{
+        width: 130px;
+        text-align:right;
+      }
+      .rightcol{
+        text-align:left;
+      }
+
+      .basictable th, td{
+      	max-width:400px;
+      	padding: 3px;
+      	border:none;
+      }
+      .basictable{
+      	border:none;
+      }

@@ -26,42 +26,55 @@
         padding: 15px;
         text-align: left;
       }
+      .toptable{
+        max-width:400px;
+      }
+      .leftcol{
+        width: 130px;
+        text-align:right;
+      }
+      .rightcol{
+        text-align:left;
+      }
+  
     </style>
   </head>
 
   <body>
     <h1>Senior Design Conference Judge Evaluation Form</h1>
     <hr/>
-    <table>
+    <table class="toptable">
       <tr>
-        <td>Judge ID: </td>
-        <td id= "jID"> </td>
+        <td class="leftcol">Judge ID: </td>
+        <td class="rightcol" id= "jID"> </td>
       </tr>
       <tr>
-        <td>Judge Name:</td>
-        <td id="jName"></td>
+        <td class="leftcol">Judge Name:</td>
+        <td class="rightcol" id="jName"></td>
       </tr>
       <tr>
-        <td>Session:</td>
-        <td id="session"></td>
+        <td class="leftcol">Session:</td>
+        <td class="rightcol" id="session"></td>
       </tr>
       <tr>
-        <td>Room:</td>
-        <td id="room"></td>
+        <td class="leftcol">Room:</td>
+        <td class="rightcol" id="room"></td>
+      </tr>
+</table>
+<br/>
+    <table class="toptable">
+
+      <tr>
+        <td class="leftcol">Project Name:</td>
+        <td class="rightcol" id="project"></td>
       </tr>
       <tr>
+        <td class="leftcol">Team Members:</td>
+        <td class="rightcol" id="members"></td>
       </tr>
       <tr>
-        <td>Project Name:</td>
-        <td id="project"></td>
-      </tr>
-      <tr>
-        <td>Team Members:</td>
-        <td id="members"></td>
-      </tr>
-      <tr>
-        <td>Advisor:</td>
-        <td id="advisor"></td>
+        <td class="leftcol">Advisor:</td>
+        <td class="rightcol" id="advisor"></td>
       </tr>
     </table>
     
@@ -261,10 +274,10 @@
 
    <script>
    var jID = getUrlVars()["judgeId"];
-    var jName = getUrlVars()["judgeName"];
+    var jName = noplus(getUrlVars()["judgeName"]);
     var projectRaw = getUrlVars()["project"];
     var session = getUrlVars()["session"];
-    var room = getUrlVars()["room"];
+    var room = noplus(getUrlVars()["room"]);
     console.log(projectRaw);
     projectRaw= noplus(projectRaw);
 
@@ -298,13 +311,18 @@
       dataType:'json',
       success: function(response){
         console.log(response);
-        document.getElementById('members').innerHTML= response[0].student;
+        line="";
+        $.each(response, function(index, element) {
+          line+=element.student + ", ";
+        })
+        line=line.substring(0,line.length-2)
+        document.getElementById('members').innerHTML= line;
         document.getElementById('advisor').innerHTML=response[0].advisor;
 
         //FIGURE OUT HOW TO DISPLAY MORE THAN ONE TEAM MEMBER
 
 
-        document.getElementById('teamhidden').value= members;
+        document.getElementById('teamhidden').value= line;
         document.getElementById('advisorhidden').value= response[0].advisor;
         // document.getElementById('projects').innerHTML=populateList(response);
         // document.getElementById('sessionhidden').value= deplist[department] + "-" + session;

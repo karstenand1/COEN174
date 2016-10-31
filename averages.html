@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>Summary Score Report</title>
+  <meta name="description" content="Judge Eval Form page 1">
+  <meta name="author" content="Group 1">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      table, td, th {
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        padding: 15px;
+        text-align: left;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Senior Design Summary Report</h1>
+    <hr/>
+    <div id="report">
+    </div>
+    <script src="geturl.js"></script>
+
+    <script>
+
+     $.ajax({
+      type:'GET',
+      url:'getAvg.php',
+      dataType:'json',
+      success: function(response){
+        console.log(response);
+          document.getElementById('report').innerHTML=displayReport(response);
+
+      }
+    });
+
+     function displayReport(data){
+      var html="";
+      var header= "<table><tr><th>"+ data[0].dept + " " + data[0].sessionNo+ "</th><th> Number of Judges</th><th>Average Score</th>";
+      
+      html= html+ header + "</tr>";
+      prevSession=data[0].dept+data[0].sessionNo;
+
+     $.each(data, function(index, element) {
+      if (prevSession!=(element.dept+element.sessionNo)){
+        html+="</table><br/>"+"<table><tr><th>"+ element.dept + " " + element.sessionNo+ "</th><th> Number of Judges</th><th>Average Score</th>";;
+        prevSession=element.dept+element.sessionNo;
+      }
+      line=["<tr><td>", element.pTitle , "</td>","<td>", element.judgeAmount , "</td>","<td>", element.avgScore , "</td>" ].join(" ");
+      html=html.concat(line, "\n");
+      console.log(html);
+    })
+      
+     html=html+"</table>";
+
+     return html;
+
+   }
+
+
+ </script>
+
+</body>
+</html>
