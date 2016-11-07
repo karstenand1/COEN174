@@ -4,9 +4,9 @@
 
   function checkPassword() {
 
-    $password='giveUsAnA'
+    $password='giveUsAnA';
 
-    if ($password==$_GET[pw]){
+    if ($password==$_GET['pw']){
       echo 1;
     }
     else{

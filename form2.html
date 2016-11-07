@@ -42,12 +42,13 @@
 
 
     <form action="form3.html">
-      Project Title: <input list="projects" name="project"><br>
-      <datalist id="projects">
+      Project Title: <!-- <input list="projects" autocomplete="off" name="project"> -->
+      <br>
+      <select id="projects" name="project" autocomplete="off">
 <!--         <option value="val1">
         <option value="val2">
           <option value="val3"> -->
-          </datalist>
+          </select>
           <input type="hidden" id= "jIDhidden" name="judgeId" >
           <input type="hidden" id="jNamehidden" name="judgeName" >
           <input type="hidden" id= "sessionhidden" name="session" >
@@ -101,7 +102,7 @@
         var option="";
         $.each(list, function(index, element) {
           var proj= element.pTitle +"-"+ element.PID;
-          var line=["<option value=\"", proj, "\">"].join(" ");
+          var line=["<option value=\"", proj, "\">",proj,"</option>"].join(" ");
           option=option.concat(line, "\n");
         })
         return option;

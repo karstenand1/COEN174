@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <style>
 form {
     border: 3px solid #f1f1f1;
@@ -67,6 +70,7 @@ span.psw {
 
 
 </style>
+</head>
 <body>
 
 <div align="center">
@@ -74,28 +78,54 @@ span.psw {
 <h2>Login</h2>
 
 
-  <div class="container">
+<!--   <div class="container">
     <label><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
-</div>
+</div> -->
 
 <div>
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" id="pw" name="psw" required>
  </div>       
 
 <div>
-<button class="button button1" style="vertical-align:middle" type="submit"><span>Login</a></span></button>
+<button class="button button1" style="vertical-align:middle" onclick=" submit()" type="submit"><span>Login</a></span></button>
+<h3 id="error" style="display:none"> Invalid password</h3>
     
 </div>
-<div>
+<!-- <div>
     <input type="checkbox" > Remember me
   </div>
-
+ -->
 </form>
 
 </div>
+<script>
 
+function submit(){
+            pw=  $('#pw').val()
+            console.log(pw)
+
+            $.ajax({
+            type:'GET',
+            url:'checkPass.php',
+            data:{pw:pw},
+            dataType:'json',
+            success: function(response){
+              if (response==1){
+                window.location.href= "Shane_View.html";
+
+              }
+              else{
+
+               document.getElementById('error').style= "display:inline-block";
+
+              }
+            }
+          });
+}
+
+</script>
 </body>
 </html>
 
