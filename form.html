@@ -14,14 +14,24 @@
 </head>
 
 <body>
+<div id="topbar">
+  <h1>SCU Senior Design Conference </h1>
+  <h1>Judge Evaluation Form</h1>
+  </div>
 <div id="main">
-  <h1>Senior Design Conference Judge Evaluation Form</h1>
-  <hr/>
-
   <form action="form2.html">
-	  Judge ID: <input type="text" name="judgeId"><br>
-	  Judge Name: <input type="text" name="judgeName"><br>
-	  <input type="submit" value="Submit">
+  <table class="nobordertable">
+  <tr>
+	 <td class="leftcol"> Judge ID: </td>
+	 <td> <input required type="text" name="judgeId"></td>
+	 </tr>
+	  <tr>
+	  <td class="leftcol">Judge Name:</td>
+	  <td> <input required type="text" name="judgeName"></td>
+	  </tr>
+  </table>
+
+	  <input type="submit" value="Continue">
   </form>
   </div>
   <script src="js/scripts.js"></script>

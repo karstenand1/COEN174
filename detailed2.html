@@ -91,7 +91,7 @@
       }
       line="<tr><td>Comments</td>"
       $.each(data, function(index, element) {
-            line+=["<td>", unescape(element["comment"]) , "</td>"].join(" ");
+            line+=["<td>", decodeURI(element["comment"]) , "</td>"].join(" ");
        })
       line=line+"</tr>"
 
