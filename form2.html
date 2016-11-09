@@ -17,33 +17,32 @@
   </head>
 
   <body>
+  <div id="topbar">
+  <h1>Select Presentation</h1>
+  </div>
   <div id="main">
-    <h1>Senior Design Conference Judge Evaluation Form</h1>
-    <hr/>
 
-        <table class="basictable">
+    <table  class=" nobordertable displaydata">
       <tr>
-        <td class="leftcol">Judge ID: </td>
+        <td class="leftcol">Judge Number: </td>
         <td class="rightcol" id= "jID"> </td>
+
+         <td class="leftcol">Session:</td>
+        <td class="rightcol" id="session"></td>
       </tr>
       <tr>
         <td class="leftcol">Judge Name:</td>
         <td class="rightcol" id="jName"></td>
-      </tr>
-      <tr>
-        <td class="leftcol">Session:</td>
-        <td class="rightcol" id="session"></td>
-      </tr>
-      <tr>
+
         <td class="leftcol">Room:</td>
         <td class="rightcol" id="room"></td>
+     
       </tr>
 </table>
 
 
     <form action="form3.html">
-      Project Title: <!-- <input list="projects" autocomplete="off" name="project"> -->
-      <br>
+     <span class="bold"> Select Presentation:</span> <!-- <input list="projects" autocomplete="off" name="project"> -->
       <select id="projects" name="project" autocomplete="off">
 <!--         <option value="val1">
         <option value="val2">
@@ -53,7 +52,8 @@
           <input type="hidden" id="jNamehidden" name="judgeName" >
           <input type="hidden" id= "sessionhidden" name="session" >
           <input type="hidden" id="roomhidden" name="room" >
-          <input type="submit" value="Submit">
+          <br/>
+          <input type="submit" value="Continue to Form">
         </form>
   </div>
         <script src="geturl.js"></script>
@@ -63,8 +63,13 @@
           var jID = getUrlVars()["judgeId"];
           var jName = getUrlVars()["judgeName"];
 
+         var splitID= jID.split("-");
+          var department= splitID[0];
+          var session= splitID[1];
+          var judge= splitID[2];
 
-          document.getElementById('jID').innerHTML= jID;
+
+          document.getElementById('jID').innerHTML= judge;
           document.getElementById('jName').innerHTML= noplus(jName);
 
 
