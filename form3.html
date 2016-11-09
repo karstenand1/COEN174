@@ -50,13 +50,12 @@
 
     </div>
     <div class="clearfix"></div>
-    <hr/>
 
     <div class="formleft">
       <p class="bold"> 1) Please evaluate the senior engineering design projects and presentations using the given point system: 
       </p>
 
-   <!--    <table class="condense">
+      <table class="condense">
 
         <tr> 
           <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td><td>at the level of an entry-level engineer you would hire </td>
@@ -76,8 +75,8 @@
     <tr> 
       <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
     </tr>
-  </table> -->
-  <!--    <table class="condense rightfollow">
+  </table>
+     <table id="scroller" class="condense rightfollow">
 
         <tr> 
           <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td>
@@ -95,10 +94,11 @@
       <td class="leftcol"> 1</td><td class="rightcol">  Poor </td>
     </tr>
     <tr> 
-      <td class="leftcol"> N/A </td><td class="rightcol"> </td>
+      <td class="leftcol"> N/A </td><td class="rightcol"> None Appropriate</td>
     </tr>
-  </table> -->
-  <table id="scroller" class="condense rightfollow">
+  </table>
+  <br/>
+ <!--  <table id="scroller" class="condense rightfollow">
 
         <tr> 
           <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td><td>at the level of an entry-level engineer you would hire </td>
@@ -118,6 +118,7 @@
     <tr> 
       <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
     </tr>
+    </table> -->
  
   <form action="form4.html">
     <table class="stripe formtable">
@@ -227,7 +228,7 @@
         <td class="radiobutton"><input type="radio" required name="P1" value="0"></td>        
       </tr>
       <tr>
-        <td>Use of Alotted Time</td>
+        <td>Use of Allotted Time</td>
         <td class="radiobutton"><input type="radio" required name="P2" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="P2" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="P2" value="3"></td>
@@ -371,7 +372,7 @@
     // NEED TO SUBMIT PID OVER TO NEXT PAGE
 
     $(window).bind('scroll', function() {
-     if ($(window).scrollTop() > 450) {
+     if ($(window).scrollTop() > 450 ||$(window).scrollTop() <200 ) {
          $('#scroller').fadeOut(500);
      }
      else {
