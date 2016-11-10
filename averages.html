@@ -35,6 +35,8 @@
     <hr/>
     <div id="report">
     </div>
+    <button class="button2 button" style="vertical-align:middle" onclick=" submit()" type="submit"><span>Download Report</a></span></button>
+
     <script src="geturl.js"></script>
 
     <script>
@@ -46,7 +48,6 @@
       success: function(response){
         console.log(response);
           document.getElementById('report').innerHTML=displayReport(response);
-
       }
     });
 

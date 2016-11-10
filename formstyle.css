@@ -135,7 +135,7 @@ th, td {
     border-bottom-style: solid;
   }
 
-  #sendbutton, input[type="submit"]{
+  #sendbutton, input[type="submit"], .button1, .button2{
 
     margin-top: 20px;
     height: 35px;
@@ -149,7 +149,7 @@ th, td {
     outline: none;
   }
 
-  input[type="submit"]:hover{
+  input[type="submit"]:hover, .button1:hover, .button2:hover, #sendbutton:hover{
 
 
     background-color: #cfefc1;
@@ -186,4 +186,10 @@ th, td {
   }
   #commentsection table td,  #commentsection table th{
     padding:5px;
+  }
+
+  .clickbutton{
+    height: 20px;
+    margin: 0;
+    width: 20px;
   }
