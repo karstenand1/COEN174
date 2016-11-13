@@ -220,3 +220,14 @@ th, td {
   margin-bottom:40px;
   table-layout: fixed;
 }
+.avgtables{
+  width:500px;
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}

@@ -28,7 +28,7 @@
       }
     </style> -->
     <link rel="stylesheet" type="text/css" href="formstyle.css">
-    <link rel="stylesheet" type="text/css" href="appstyle.css">
+    <!-- <link rel="stylesheet" type="text/css" href="appstyle.css"> -->
 
   </head>
 
@@ -38,18 +38,19 @@
     </div>
     <table id="info" class="nobordertable displaydata">
     </table>
+    <input class="button2 button no-print" style=" float: right; position: absolute; right: 120px; top: 80px;" type=button name=print value="Print/PDF" onClick="window.print()">
+
     <div style="margin-right:auto; margin-left: auto;width:90%" id="report">
     </div>
     <br/>
     <table id="commentTable" class="stripe detailedtable ">
     </table>
-
+  
     <script src="geturl.js"></script>
 
     <script src="mappings.js"></script>
 
     <script>
-
 
      function getreport(pid){
       $.ajax({
