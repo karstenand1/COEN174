@@ -137,8 +137,9 @@
       <div style="text-align: center;">
         <button id="sendbutton" style=" width: 200px;  font-size: 20px;" onclick="sendScores()">Submit Scores</button>
         <br/>
-        <h3 id="success" style="display:none"> Submit Successful</h3>
-        <h3> <a href="form.html" class="button">Go back to Home Form</a>
+        <h3 id="success" style="display:none"> 
+          Submit Successful <br/>
+          <a href="form.html" class="button">Go back to Home Form</a> 
         </h3>
       </div>
     </div>

@@ -76,28 +76,28 @@
       <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
     </tr>
   </table>
-     <table id="scroller" class="condense rightfollow">
+  <table id="scroller" class="condense rightfollow">
 
-        <tr> 
-          <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td>
-        </tr>
-        <tr> 
-         <td class="leftcol">4</td> <td class="rightcol"> Good </td>
-       </tr>
-       <tr> 
-        <td class="leftcol"> 3 </td><td class="rightcol"> Average </td>
-      </tr>
-      <tr>
-       <td class="leftcol"> 2 </td><td class="rightcol"> Below Average </td>
-     </tr>
-     <tr> 
-      <td class="leftcol"> 1</td><td class="rightcol">  Poor </td>
+    <tr> 
+      <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td>
     </tr>
     <tr> 
-      <td class="leftcol"> N/A </td><td class="rightcol"> None Appropriate</td>
-    </tr>
-  </table>
-  <br/>
+     <td class="leftcol">4</td> <td class="rightcol"> Good </td>
+   </tr>
+   <tr> 
+    <td class="leftcol"> 3 </td><td class="rightcol"> Average </td>
+  </tr>
+  <tr>
+   <td class="leftcol"> 2 </td><td class="rightcol"> Below Average </td>
+ </tr>
+ <tr> 
+  <td class="leftcol"> 1</td><td class="rightcol">  Poor </td>
+</tr>
+<tr> 
+  <td class="leftcol"> N/A </td><td class="rightcol"> None Appropriate</td>
+</tr>
+</table>
+<br/>
  <!--  <table id="scroller" class="condense rightfollow">
 
         <tr> 
@@ -118,8 +118,8 @@
     <tr> 
       <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
     </tr>
-    </table> -->
- 
+  </table> -->
+
   <form action="confirmform.php" method="post">
     <table class="stripe formtable">
       <tr>
@@ -142,63 +142,63 @@
       </tr>
       <tr>
         <td>Creativity and Innovation</td>
-      <td class="radiobutton"> <input type="radio" required name="DP2" value="0"></td>
+        <td class="radiobutton"> <input type="radio" required name="DP2" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="DP2" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="DP2" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="DP2" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP2" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP2" value="5"></td>
-              
+
       </tr>
       <tr>
         <td>Supporting Analytical Work</td>
-      <td class="radiobutton"> <input type="radio" required name="DP3" value="0"></td>
+        <td class="radiobutton"> <input type="radio" required name="DP3" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="DP3" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="DP3" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="DP3" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP3" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP3" value="5"></td>
-              
+
       </tr>
       <tr>
         <td>Methodical Design Process Demonstrated</td>
-      <td class="radiobutton"> <input type="radio" required name="DP4" value="0"></td>
+        <td class="radiobutton"> <input type="radio" required name="DP4" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="DP4" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="DP4" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="DP4" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP4" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP4" value="5"></td>
-              
+
       </tr>
       <tr>
         <td>Addresses Project Complexity Appropriately</td>
-       <td class="radiobutton"> <input type="radio" required name="DP5" value="0"></td>
+        <td class="radiobutton"> <input type="radio" required name="DP5" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="DP5" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="DP5" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="DP5" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP5" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP5" value="5"></td>
-             
+
       </tr>
       <tr>
         <td>Expectation of Completion</td>
-       <td class="radiobutton"> <input type="radio" required name="DP6" value="0"></td>
+        <td class="radiobutton"> <input type="radio" required name="DP6" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="DP6" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="DP6" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="DP6" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP6" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP6" value="5"></td>
-                     
+
       </tr>
       <tr>
         <td>Design and Analysis of Tests</td>
-       <td class="radiobutton"> <input type="radio" required name="DP7" value="0"></td>
+        <td class="radiobutton"> <input type="radio" required name="DP7" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="DP7" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="DP7" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="DP7" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP7" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP7" value="5"></td>
-                  
+
       </tr>
       <tr>
         <td>Quality of Response during Q&A</td>
@@ -208,7 +208,7 @@
         <td class="radiobutton"><input type="radio" required name="DP8" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="DP8" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="DP8" value="5"></td>
-                
+
       </tr>
     </table>
 
@@ -227,13 +227,13 @@
       </tr>
       <tr>
         <td>Organization</td>
-      <td class="radiobutton"><input type="radio" required name="P1" value="0"></td>
+        <td class="radiobutton"><input type="radio" required name="P1" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="P1" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="P1" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="P1" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="P1" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="P1" value="5"></td>
-             
+
       </tr>
       <tr>
         <td>Use of Allotted Time</td>
@@ -243,17 +243,17 @@
         <td class="radiobutton"><input type="radio" required name="P2" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="P2" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="P2" value="5"></td>
-             
+
       </tr>
       <tr>
         <td>Visual Aids</td>
-       <td class="radiobutton"><input type="radio" required name="P3" value="0"></td>
+        <td class="radiobutton"><input type="radio" required name="P3" value="0"></td>
         <td class="radiobutton"><input type="radio" required name="P3" value="1"> </td>
         <td class="radiobutton"><input type="radio" required name="P3" value="2"></td>
         <td class="radiobutton"><input type="radio" required name="P3" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="P3" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="P3" value="5"></td>
-             
+
       </tr>
       <tr>
         <td>Confidence and Poise</td>
@@ -263,11 +263,11 @@
         <td class="radiobutton"><input type="radio" required name="P4" value="3"></td>
         <td class="radiobutton"><input type="radio" required name="P4" value="4"></td>
         <td class="radiobutton"><input type="radio" required name="P4" value="5"></td>
-             
+
       </tr>
     </table>
-        <div class="clearfix"></div>
-        <br/>
+    <div class="clearfix"></div>
+    <br/>
 
     <h2>Total Points: </h2>
     <p class="bold instruction">
@@ -298,51 +298,51 @@
      3) Additional Comments  (Limit 255 chars):
    </p>
 
-<div style="text-align:center;">
+   <div style="text-align:center;">
 
-   <textarea rows="4" cols="100" maxlength="255" name="comments"></textarea>
+     <textarea rows="4" cols="100" maxlength="255" name="comments"></textarea>
 
-   <br/>
-      <!-- <button > Save </button> -->
-   <input type="hidden" id= "jIDhidden" name="judgeId" >
-   <input type="hidden" id="jNamehidden" name="judgeName" >
-   <input type="hidden" id= "sessionhidden" name="session" >
-   <input type="hidden" id="roomhidden" name="room" >
-   <input type="hidden" id="projecthidden" name="project" >
-   <input type="hidden" id="teamhidden" name="team" >
-   <input type="hidden" id="advisorhidden" name="advisor" >
-   <input type="hidden" id="PID" name="PID" >
-   <input type="submit" value="Confirm Submit">
-</div>
+     <br/>
+     <!-- <button > Save </button> -->
+     <input type="hidden" id= "jIDhidden" name="judgeId" >
+     <input type="hidden" id="jNamehidden" name="judgeName" >
+     <input type="hidden" id= "sessionhidden" name="session" >
+     <input type="hidden" id="roomhidden" name="room" >
+     <input type="hidden" id="projecthidden" name="project" >
+     <input type="hidden" id="teamhidden" name="team" >
+     <input type="hidden" id="advisorhidden" name="advisor" >
+     <input type="hidden" id="PID" name="PID" >
+     <input type="submit" value="Confirm Submit">
+   </div>
  </form>
 </div>
 
 <div class="footer">
-<div>
-<script src="geturl.js"></script>
+  <div>
+    <script src="geturl.js"></script>
 
-<script>
+    <script>
 
- var jID = document.getElementById('jID').innerHTML.replace(/\s/g,'');
- console.log(jID)
- var jName =document.getElementById('jName').innerHTML;
- var session = document.getElementById('session').innerHTML;
- var room = document.getElementById('room').innerHTML;
-
-
- projectRaw=document.getElementById('project').innerHTML;
-
- console.log(projectRaw);
+     var jID = document.getElementById('jID').innerHTML.replace(/\s/g,'');
+     console.log(jID)
+     var jName =document.getElementById('jName').innerHTML;
+     var session = document.getElementById('session').innerHTML;
+     var room = document.getElementById('room').innerHTML;
 
 
- projectRaw= noplus(projectRaw);
+     projectRaw=document.getElementById('project').innerHTML;
+
+     console.log(projectRaw);
 
 
- projlist=projectRaw.split("-");
- console.log(projlist);
+     projectRaw= noplus(projectRaw);
 
- project=projlist[0];
- PID=$.trim(projlist[1]);
+
+     projlist=projectRaw.split("-");
+     console.log(projlist);
+
+     project=projlist[0];
+     PID=$.trim(projlist[1]);
 
  // document.getElementById('jID').innerHTML= jID;
  // document.getElementById('jName').innerHTML= jName;
@@ -375,26 +375,24 @@
     document.getElementById('members').innerHTML= line;
     document.getElementById('advisor').innerHTML=response[0].advisor;
 
-        document.getElementById('teamhidden').value= line;
-        document.getElementById('advisorhidden').value= response[0].advisor;
-        // document.getElementById('projects').innerHTML=populateList(response);
-        // document.getElementById('sessionhidden').value= deplist[department] + "-" + session;
-        // document.getElementById('roomhidden').value= response[0].roomNum;
-      }
-    });
+    document.getElementById('teamhidden').value= line;
+    document.getElementById('advisorhidden').value= response[0].advisor;
+    
+  }
+});
 
     // NEED TO SUBMIT PID OVER TO NEXT PAGE
 
     $(window).bind('scroll', function() {
-     if ($(window).scrollTop() > 450 ||$(window).scrollTop() <200 ) {
-         $('#scroller').fadeOut(500);
+      if ($(window).scrollTop() > 600 ) {
+       $('#scroller').fadeOut(200);
      }
      else {
-         $('#scroller').fadeIn(500);
+       $('#scroller').fadeIn(200);
      }
-});
+   });
 
-  </script>
+ </script>
 
 </body>
 </html>
