@@ -209,7 +209,7 @@
                   'PID': document.getElementById("PID").innerHTML,
                   'judgeId': document.getElementById("jID").innerHTML ,
                   'judgeName':document.getElementById("jName").innerHTML ,
-                  'comments': document.getElementById("PID").innerHTML,
+                  'comments': document.getElementById("comments").innerHTML,
     };
     console.log(presScores)
 
@@ -248,9 +248,11 @@
       }
 
 
-      $('sendbutton').on('click', function() {
-        $(this).prop('disabled', true);
-      });
+      // $('sendbutton').on('click', function() {
+      //   $(this).prop('disabled', true);
+      //    document.getElementById("sendbutton").style="display:none;";
+
+      // });
 
       function sendScores(){
         $.ajax({
@@ -259,7 +261,10 @@
           data:presScores,
           success: function(response){
             console.log(response)
+            document.getElementById("sendbutton").style="display:none;";
+
             document.getElementById('success').style= "display:inline";
+
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
            alert("some error");

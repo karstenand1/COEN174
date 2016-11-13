@@ -15,7 +15,7 @@
 
 <body>
 	<div id="topbar">
-		<h1>SCU Senior Design Conference </h1>
+		<h2>SCU Senior Design Conference </h2>
 		<h1>Judge Evaluation Form</h1>
 	</div>
 	<div id="main">
@@ -25,29 +25,34 @@
 			<table class="nobordertable">
 				<tr>
 					<td class="leftcol"> Judge ID: </td>
-					<td> <input required type="text" id="judgeID" name="judgeID"></td>
+					<td> <input autocomplete="off" required type="text" id="judgeID" name="judgeID"></td>
 				</tr>
 				<tr>
 					<td class="leftcol">Judge Name:</td>
-					<td ><input required type="text" id="name" name="name"></td>
+					<td ><input autocomplete="off" required type="text" id="name" name="name"></td>
 				</tr>
 				<tr>
 					<td class="leftcol">Session:</td>
 					<td ><input required type="number" min= "1" max="10" id="session" name="session"></td>
 				</tr>
+			</table>
+			<table id="step2table" class="nobordertable" style="display:none">
 				<tr>
 					<td class="leftcol">Department:</td>
-					<td ><p id="dept"></p></td>
+					<td ><p style="padding:0; margin:0;" id="dept"></p></td>
 				</tr>
-				<tr>
+				<tr >
 					<td class="leftcol">Room:</td>
-					<td ><p id="room"></p></td>
+					<td ><p style="padding:0; margin:0;"  id="room"></p></td>
 				</tr>
 			</table>
 
-			<button id="checkbutton" onclick="checkpin()" > Check Pin </button>
-
+			<button id="checkbutton" class="button1" onclick="checkpin()" > Check Pin </button>
+			<br/>
+			<br/>
 			<h3 id="error" style="display:none"> Invalid input</h3>
+			<h3 id="nopres" style="display:none"> No presentations. Double check session number.</h3>
+
 
 		</form>
 
@@ -65,7 +70,6 @@
         	<input type="submit" value="Continue to Form">
         </form>
     </div>
-    <script src="js/scripts.js"></script>
     <script>
     	$('#form').submit(function () {
     		checkpin();
@@ -115,16 +119,28 @@
 	          data:{department:dept, session: sess},
 	          dataType:'json',
 	          success: function(response){
-	            console.log(response)    					
+	            console.log(response)    	
+	            if (response.length>0)	{		
+	            	document.getElementById('error').style= "display:none";
+	            	document.getElementById('nopres').style= "display:none";
 
-	            document.getElementById('presentations').style= "display:inline-block";
-	             document.getElementById('checkbutton').style= "display:none";
-
-	            document.getElementById('room').innerHTML= response[0].roomNum;
-	            document.getElementById('projects').innerHTML=populateList(response);
-	            document.getElementById('sessionhidden').value= dept + "-" + session;
-	            document.getElementById('roomhidden').value= response[0].roomNum;
+	            
+    	            document.getElementById('presentations').style= "display:inline-block";
+    	             document.getElementById('checkbutton').style= "display:none";
+    
+    	            document.getElementById('step2table').style= "display:inline";
+    
+    	            document.getElementById('room').innerHTML= response[0].roomNum;
+    	            document.getElementById('projects').innerHTML=populateList(response);
+    
+    	            document.getElementById('sessionhidden').value= dept + "-" + session;
+    	            document.getElementById('roomhidden').value= response[0].roomNum;
 	          }
+
+	          else{
+	          	document.getElementById('nopres').style='display:inline';
+	          }
+	      }
 	        });
   	  }
 

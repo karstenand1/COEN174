@@ -14,10 +14,12 @@ body{
 }
 h1{
   color:#A32638 ;
+  margin:5px;
 }
 h2{
   margin: 0;
-  font-size:20px;
+  font-size:26px;
+  color:#A32638 ;
 }
 th{
  background-color: #FFE3C4;
@@ -196,3 +198,25 @@ th, td {
     margin: 0;
     width: 20px;
   }
+
+#step2table table td .leftcol{
+  width:96px;
+}
+#step2table table  p{
+  margin: 0;
+}
+#presentations{
+  font-size:20px;
+}
+/*.detailedtable  th{
+  width:200px;
+  min-width: 40px;
+  max-width:200px;
+}*/
+
+#commentTable{
+  width:60%;
+  margin-top: 40px;
+  
+  table-layout: fixed;
+}
