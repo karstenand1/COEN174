@@ -3,38 +3,144 @@
 <html lang="en">
 <head>
 
-  <meta charset="utf-8">
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<title>Judge Evaluation Form</title>
+	<meta name="description" content="Judge Eval Form page 1">
+	<meta name="author" content="Group 1">
 
-  <title>Judge Evaluation Form</title>
-  <meta name="description" content="Judge Eval Form page 1">
-  <meta name="author" content="Group 1">
-
-<link rel="stylesheet" type="text/css" href="formstyle.css">
+	<link rel="stylesheet" type="text/css" href="formstyle.css">
 
 </head>
 
 <body>
-<div id="topbar">
-  <h1>SCU Senior Design Conference </h1>
-  <h1>Judge Evaluation Form</h1>
-  </div>
-<div id="main">
-  <form action="form2.html">
-  <table class="nobordertable">
-  <tr>
-	 <td class="leftcol"> Judge ID: </td>
-	 <td> <input required type="text" name="judgeId"></td>
-	 </tr>
-	  <tr>
-	  <td class="leftcol">Judge Name:</td>
-	  <td> <input required type="text" name="judgeName"></td>
-	  </tr>
-  </table>
+	<div id="topbar">
+		<h1>SCU Senior Design Conference </h1>
+		<h1>Judge Evaluation Form</h1>
+	</div>
+	<div id="main">
+		<!-- <form method="post" action="form2.html"> -->
 
-	  <input type="submit" value="Continue">
-  </form>
-  </div>
-  <script src="js/scripts.js"></script>
+		<form id="form" method="post">
+			<table class="nobordertable">
+				<tr>
+					<td class="leftcol"> Judge ID: </td>
+					<td> <input required type="text" id="judgeID" name="judgeID"></td>
+				</tr>
+				<tr>
+					<td class="leftcol">Judge Name:</td>
+					<td ><input required type="text" id="name" name="name"></td>
+				</tr>
+				<tr>
+					<td class="leftcol">Session:</td>
+					<td ><input required type="number" min= "1" max="10" id="session" name="session"></td>
+				</tr>
+				<tr>
+					<td class="leftcol">Department:</td>
+					<td ><p id="dept"></p></td>
+				</tr>
+				<tr>
+					<td class="leftcol">Room:</td>
+					<td ><p id="room"></p></td>
+				</tr>
+			</table>
+
+			<button id="checkbutton" onclick="checkpin()" > Check Pin </button>
+
+			<h3 id="error" style="display:none"> Invalid input</h3>
+
+		</form>
+
+		<form  method="post" style="display:none" id="presentations" action="actualform.php">
+			<span class="bold"> Select Presentation:</span> 
+			<select required id="projects" name="project" autocomplete="off">
+
+        	</select>
+        	        	<input type="hidden" id="jIDhidden" name="jID" >
+
+        	<input type="hidden" id="jNamehidden" name="judgeName" >
+        	<input type="hidden" id= "sessionhidden" name="session" >
+        	<input type="hidden" id="roomhidden" name="room" >
+        	<br/>
+        	<input type="submit" value="Continue to Form">
+        </form>
+    </div>
+    <script src="js/scripts.js"></script>
+    <script>
+    	$('#form').submit(function () {
+    		checkpin();
+    		return false;
+    	});
+
+
+    	function checkpin(){
+    		pin= $('#judgeID').val().toUpperCase();
+    		name= $('#name').val().toUpperCase();
+    		session=$('#session').val();
+
+    		console.log(pin, name,session,'init');
+
+    		$.ajax({
+    			type:'GET',
+    			url:'checkPin.php',
+    			data:{pin:pin, name:name},
+    			dataType:'json',
+    			success: function(response){
+
+    				// console.log(response, "respo");
+    				if (response=="-1"){
+    					// console.log("hellpo")
+    					document.getElementById('error').style= "display:inline-block";
+    				}
+    				else{
+    					// console.log("helo")
+    					document.getElementById('error').style= "display:none";
+			        	document.getElementById('jNamehidden').value=response[1];
+			        	document.getElementById('jIDhidden').value=response[0];
+
+			        	document.getElementById('dept').innerHTML=response[2];
+			        	getPresentations(response[2], session);
+			        	// window.location.href= "form2.html";
+
+			        }
+			    }
+			});
+    		// console.log(pin)
+    	}
+
+    	function getPresentations(dept, sess){
+	    	$.ajax({
+	          type:'GET',
+	          url:'getPres.php',
+	          data:{department:dept, session: sess},
+	          dataType:'json',
+	          success: function(response){
+	            console.log(response)    					
+
+	            document.getElementById('presentations').style= "display:inline-block";
+	             document.getElementById('checkbutton').style= "display:none";
+
+	            document.getElementById('room').innerHTML= response[0].roomNum;
+	            document.getElementById('projects').innerHTML=populateList(response);
+	            document.getElementById('sessionhidden').value= dept + "-" + session;
+	            document.getElementById('roomhidden').value= response[0].roomNum;
+	          }
+	        });
+  	  }
+
+      // document.getElementById('projects').innerHTML=populateList(["hello","hello"]);
+
+      function populateList(list){
+        var option="";
+        $.each(list, function(index, element) {
+          var proj= element.pTitle +"-"+ element.PID;
+          var line=["<option value=\"", proj, "\">",proj,"</option>"].join(" ");
+          option=option.concat(line, "\n");
+        })
+        return option;
+      }
+
+    </script>
 
 </body>
 </html>

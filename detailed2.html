@@ -27,16 +27,16 @@
         text-align: left;
       }
     </style> -->
-        <link rel="stylesheet" type="text/css" href="formstyle.css">
-         <link rel="stylesheet" type="text/css" href="appstyle.css">
+    <link rel="stylesheet" type="text/css" href="formstyle.css">
+    <link rel="stylesheet" type="text/css" href="appstyle.css">
 
   </head>
 
   <body>
     <h1>Senior Design Detailed Score Reports</h1>
     <hr/>
-    <div id="info">
-    </div>
+    <table id="info" class="nobordertable displaydata">
+    </table>
     <div id="report">
     </div>
 
@@ -56,6 +56,7 @@
         success: function(response){
           console.log(response);
           document.getElementById('report').innerHTML=displayReport(response);
+          document.getElementById('info').innerHTML=displayInfo(response[0]);
         }
       });
     }
@@ -64,39 +65,45 @@
       var html="";
       header="";
       header+="<table><tr><th><u>"+ data[0].pTitle +"</u></th>"
-     $.each(data, function(index, element) {
-          line=["<th>", noplus(element.judgeName) , "</th>"].join(" ");
-          header=header.concat(line, "\n");
-        })
+      $.each(data, function(index, element) {
+        line=["<th>", noplus(element.judgeName) , "</th>"].join(" ");
+        header=header.concat(line, "\n");
+      })
       
-     html= html+ header + "</tr>";
-     console.log(html);
+      html= html+ header + "</tr>";
+     // console.log(html);
 
 
-      for (var key in formMap) {
-         row="<tr>"
-        if (formMap.hasOwnProperty(key)) {
-           line=["<td>", formMap[key] , "</td>"].join(" ");
-           row=row.concat(line, "\n");
+     for (var key in formMap) {
+       row="<tr>"
+       if (formMap.hasOwnProperty(key)) {
+         line=["<td>", formMap[key] , "</td>"].join(" ");
+         row=row.concat(line, "\n");
 
-          $.each(data, function(index, element) {
-            line=["<td>", noplus(element[key]) , "</td>"].join(" ");
-            row=row.concat(line, "\n");
-          })
-          html=html+row+"</tr>";
-          console.log(row);
+         $.each(data, function(index, element) {
+          line=["<td>", noplus(element[key]) , "</td>"].join(" ");
+          row=row.concat(line, "\n");
+        })
+         html=html+row+"</tr>";
+          // console.log(row);
         }
       }
       line="<tr><td>Comments</td>"
       $.each(data, function(index, element) {
-            line+=["<td>", decodeURI(element["comment"]) , "</td>"].join(" ");
-       })
+        line+=["<td>", decodeURI(element["comment"]) , "</td>"].join(" ");
+      })
       line=line+"</tr>"
 
       html=html+line+"</table>"
       return html;
 
-      }
+    }
+
+    function displayInfo(info){
+
+     var labels={"Advisor":"advisor", "Department Session": "depSesh", "Room": "roomNum" }
+
+     info["depSesh"]=info["dept"]+" "+ info["sessionNo"];
 
      var url = noplus(getUrlVars()["PID"]);
      split= url.split("-")
@@ -104,14 +111,44 @@
      pid=split[0];
      advisor=split[1];
      team=split[2].replace(("%2C"),", ");
-    document.getElementById('info').innerHTML="Advisor: " +advisor+ "<br/> Team Members: " + team;
+     var html=  "<tr><td style=\"font-weight:bold;\" class=\"leftcol\"> Team Members: </td><td>" + team+ "</td>" ;
+     count=1;
+     var row="";
+     for (var key in labels) {
+       if (count%2==0){
+        row="<tr>"
+      }
+      else{
+        row="";
+      }
+      if (labels.hasOwnProperty(key)) {
+       line=["<td style=\"font-weight:bold;\" class=\"leftcol \">", key, "</td><td>", info[labels[key]] , "</td>"].join(" ");
+       // console.log(row, line);
+       row=row.concat(line, "\n");
+       html=html+row;
+       if (count%2!=0){
+        row="</tr>";
+      };
 
-     getreport(pid);
+      console.log(html);
+    }
+    count+=1;
+  }
+  return html;
 
-  
+}
+
+var url = noplus(getUrlVars()["PID"]);
+split= url.split("-")
+console.log(split);
+pid=split[0];
+
+getreport(pid);
 
 
-  </script>
+
+
+</script>
 
 </body>
 </html>

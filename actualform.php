@@ -23,24 +23,24 @@
     <div style="margin-right: auto; margin-left:auto; width:initial;">
       <table  style="float:center" class=" nobordertable displaydata">
         <tr>
-          <td class=" leftcol ">Judge Number: </td>
-          <td class="  old" id= "jID"> </td>
+          <td class=" leftcol ">Judge ID: </td>
+          <td class="  old" id= "jID"><?php echo $_POST['jID']; ?> </td>
 
           <td class="leftcol ">Session:</td>
-          <td class=" old" id="session"></td>
+          <td class=" old" id="session"><?php echo $_POST['session']; ?></td>
 
           <td class="leftcol">Project Name:</td>
-          <td class="rightcol" id="project"></td>
+          <td class="rightcol" id="project"> <?php echo $_POST['project']; ?></td>
 
           <td class="leftcol">Team Members:</td>
-          <td class="rightcol" id="members"></td>
+          <td class="rightcol" id="members" style="max-width: 150px; "></td>
         </tr>
         <tr>
           <td class="leftcol ">Judge Name:</td>
-          <td class=" old" id="jName"></td>
+          <td class=" old" id="jName"><?php echo $_POST['judgeName']; ?></td>
 
           <td class="leftcol ">Room:</td>
-          <td class=" old" id="room"></td>
+          <td class=" old" id="room"><?php echo $_POST['room']; ?></td>
 
           <td class="leftcol">Advisor:</td>
           <td class="rightcol" id="advisor"></td>
@@ -120,7 +120,7 @@
     </tr>
     </table> -->
  
-  <form action="form4.html">
+  <form action="confirmform.php" method="post">
     <table class="stripe formtable">
       <tr>
         <th style="width:315px;"> <h2>Design Project</h2></th>
@@ -298,8 +298,12 @@
      3) Additional Comments  (Limit 255 chars):
    </p>
 
+<div style="text-align:center;">
 
-   <!-- <button > Save </button> -->
+   <textarea rows="4" cols="100" maxlength="255" name="comments"></textarea>
+
+   <br/>
+      <!-- <button > Save </button> -->
    <input type="hidden" id= "jIDhidden" name="judgeId" >
    <input type="hidden" id="jNamehidden" name="judgeName" >
    <input type="hidden" id= "sessionhidden" name="session" >
@@ -308,11 +312,6 @@
    <input type="hidden" id="teamhidden" name="team" >
    <input type="hidden" id="advisorhidden" name="advisor" >
    <input type="hidden" id="PID" name="PID" >
-<div style="text-align:center;">
-
-   <textarea rows="4" cols="100" maxlength="255" name="comments"></textarea>
-
-   <br/>
    <input type="submit" value="Confirm Submit">
 </div>
  </form>
@@ -324,16 +323,19 @@
 
 <script>
 
- // var jID = getUrlVars()["judgeId"];
- // var jName = noplus(getUrlVars()["judgeName"]);
- // var projectRaw = getUrlVars()["project"];
- // var session = getUrlVars()["session"];
- // var room = noplus(getUrlVars()["room"]);
+ var jID = document.getElementById('jID').innerHTML.replace(/\s/g,'');
+ console.log(jID)
+ var jName =document.getElementById('jName').innerHTML;
+ var session = document.getElementById('session').innerHTML;
+ var room = document.getElementById('room').innerHTML;
 
 
+ projectRaw=document.getElementById('project').innerHTML;
 
- projectRaw=<?php  $_POST['project'] ?>;
  console.log(projectRaw);
+
+
+ projectRaw= noplus(projectRaw);
 
 
  projlist=projectRaw.split("-");
@@ -342,11 +344,11 @@
  project=projlist[0];
  PID=$.trim(projlist[1]);
 
- document.getElementById('jID').innerHTML= jID;
- document.getElementById('jName').innerHTML= jName;
- document.getElementById('project').innerHTML= project;
- document.getElementById('session').innerHTML= session;
- document.getElementById('room').innerHTML= room;
+ // document.getElementById('jID').innerHTML= jID;
+ // document.getElementById('jName').innerHTML= jName;
+ // document.getElementById('project').innerHTML= project;
+ // document.getElementById('session').innerHTML= session;
+ // document.getElementById('room').innerHTML= room;
 
  document.getElementById('jIDhidden').value= jID;
  document.getElementById('jNamehidden').value= jName;
@@ -372,9 +374,6 @@
     line=line.substring(0,line.length-2)
     document.getElementById('members').innerHTML= line;
     document.getElementById('advisor').innerHTML=response[0].advisor;
-
-        //FIGURE OUT HOW TO DISPLAY MORE THAN ONE TEAM MEMBER
-
 
         document.getElementById('teamhidden').value= line;
         document.getElementById('advisorhidden').value= response[0].advisor;
