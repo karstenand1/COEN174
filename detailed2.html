@@ -33,13 +33,14 @@
   </head>
 
   <body>
-    <h1>Senior Design Detailed Score Reports</h1>
-    <hr/>
+    <div id="topbar">
+      <h1>Senior Design Detailed Score Report</h1>
+    </div>
     <table id="info" class="nobordertable displaydata">
     </table>
     <div style="margin-right:auto; margin-left: auto;width:90%" id="report">
     </div>
-<br/>
+    <br/>
     <table id="commentTable" class="stripe detailedtable ">
     </table>
 
@@ -75,7 +76,7 @@
       
       html= html+ header + "</tr>";
      // console.log(html);   
-        var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
+     var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
 
 
      for (var key in formMap) {
@@ -86,44 +87,44 @@
          row=row+line+ "\n";
 
          if (cons.indexOf(key)!=-1){
-            $.each(data, function(index, element) {
-              if (element[key]=="1"){
-                 line=["<td style=\"background-color:#A32638;\"> X </td>"].join(" ");
+          $.each(data, function(index, element) {
+            if (element[key]=="1"){
+             line=["<td style=\"background-color:#A32638;\"> X </td>"].join(" ");
 
-              }
-              else{
-               line=["<td></td>"].join(" ");
+           }
+           else{
+             line=["<td></td>"].join(" ");
 
-              }
-            row=row.concat(line, "\n");
-            })
-         }
+           }
+           row=row.concat(line, "\n");
+         })
+        }
 
-         else{
-           $.each(data, function(index, element) {
-            line=["<td>", noplus(element[key]) , "</td>"].join(" ");
-            row=row.concat(line, "\n");
-          })
-         }
-         html=html+row+"</tr>";
+        else{
+         $.each(data, function(index, element) {
+          line=["<td>", noplus(element[key]) , "</td>"].join(" ");
+          row=row.concat(line, "\n");
+        })
+       }
+       html=html+row+"</tr>";
           // console.log(row);
 
 
         }
       }
 
-     comment="<tr><th style=\"width:200px; max-width:200px\">Judge</th><th >Comment</th></tr>";
-     line="";
+      comment="<tr><th style=\"width:200px; max-width:200px\">Judge</th><th >Comment</th></tr>";
+      line="";
 
       $.each(data, function(index, element) {
-         line="<tr><td>"+ noplus(element.judgeName)+"</td>";
+       line="<tr><td>"+ noplus(element.judgeName)+"</td>";
 
-        line+=["<td style=\"font-size:14px;\">", decodeURI(element["comment"]) , "</td>"].join(" ");
-         comment=comment+line+"</tr>"
-        console.log(comment ,"h", line)
+       line+=["<td style=\"font-size:14px;\">", decodeURI(element["comment"]) , "</td>"].join(" ");
+       comment=comment+line+"</tr>"
+       console.log(comment ,"h", line)
 
 
-      })
+     })
       console.log(comment)
       document.getElementById('commentTable').innerHTML=comment;
 
