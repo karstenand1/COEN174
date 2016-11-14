@@ -2,13 +2,20 @@
 
   modDatabase();
 
+  header("Content-Type: text/csv");
+  header("Content-Disposition: attachment; filename=file.csv");
+  // Disable caching
+  header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
+  header("Pragma: no-cache"); // HTTP 1.0
+  header("Expires: 0");
+
   function modDatabase() {
 
     ini_set('display_errors','On');
     error_reporting(E_ALL);
 
     $txt_file    = file_get_contents('db.txt');
-    $row_data = explode('^', $data);
+    $row_data = explode('^', $txt_file);
 
     $db_host = $row_data[0];
     $db_user = $row_data[1];
@@ -36,7 +43,14 @@
     while($r = mysqli_fetch_assoc($result)) {
       $rows[] = $r;
     }
-    echo json_encode($rows);
+
+    $fp = fopen('php://output', 'w');
+    fputcsv($fp, array_keys($rows[0]));
+    foreach ($rows as $val) {
+      fputcsv($fp, $val);
+    }
+
+    fclose($fp);
 
     mysqli_close($con);
 
