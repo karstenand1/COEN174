@@ -231,3 +231,12 @@ th, td {
         display: none !important;
     }
 }
+
+.box{
+    vertical-align: middle;
+    width: 50%;
+    border: solid #548452;
+    border-radius: 4px;
+    padding-top:10px;
+    padding-bottom:10px;
+}

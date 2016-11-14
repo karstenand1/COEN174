@@ -58,6 +58,12 @@
   right: 0;
 }
 
+#upbutton span:after{
+
+  content: '';
+
+}
+
 .button1
 {
 	background-color: red;

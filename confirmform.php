@@ -210,7 +210,7 @@
                   'PID': document.getElementById("PID").innerHTML,
                   'judgeId': document.getElementById("jID").innerHTML ,
                   'judgeName':document.getElementById("jName").innerHTML ,
-                  'comments': document.getElementById("comments").innerHTML,
+                  'comments': document.getElementById("comments").innerHTML.replace('\'','\'\'')
     };
     console.log(presScores)
 
