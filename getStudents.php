@@ -6,10 +6,14 @@
 
     ini_set('display_errors','On');
     error_reporting(E_ALL);
-    $db_host = "dbserver.engr.scu.edu";
-    $db_user = "kanderse";
-    $db_pass = "00000918652";
-    $db_name = "sdb_kanderse";
+
+    $txt_file    = file_get_contents('db.txt');
+    $row_data = explode('^', $txt_file);
+
+    $db_host = $row_data[0];
+    $db_user = $row_data[1];
+    $db_pass = $row_data[2];
+    $db_name = $row_data[3];
     $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
     // Check connection
     if (mysqli_connect_errno())
