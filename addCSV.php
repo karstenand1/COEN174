@@ -26,7 +26,7 @@ $target_dir = dirname(__FILE__)."/Uploads/";
 if(isset($_POST["import"]) && !empty($_FILES)) {
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	if($fileType != "csv")  // here we are checking for the file extension. We are not allowing othre then (.csv) extension .
+	if($fileType != "csv")  // here we are checking for the file extension. We are not allowing other then (.csv) extension .
 	{
 		$message .= "Sorry, only CSV file is allowed.<br>";
 		$error=1;
@@ -34,7 +34,7 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 	else
 	{
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			$message .="File uplaoded successfully.<br>";
+			$message .="File uploaded successfully.<br>";
 
 			if (($getdata = fopen($target_file, "r")) !== FALSE) {
 			   fgetcsv($getdata);
@@ -43,15 +43,20 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 					for ($c=0; $c < $fieldCount; $c++) {
 					  $columnData[$c] = $data[$c];
 					}
-			 $option_name = mysqli_real_escape_string($connect ,$columnData[0]);
-			 $option_value = mysqli_real_escape_string($connect ,$columnData[1]);
-			 $import_data[]="('".$option_name."','".$option_value."')";
+			 $option_one = mysqli_real_escape_string($con ,$columnData[0]);
+			 $option_two = mysqli_real_escape_string($con ,$columnData[1]);
+       $option_three = mysqli_real_escape_string($con ,$columnData[2]);
+			 $option_four = mysqli_real_escape_string($con ,$columnData[3]);
+       $option_five= mysqli_real_escape_string($con ,$columnData[4]);
+			 $option_six = mysqli_real_escape_string($con ,$columnData[5]);
+       $option_seven = mysqli_real_escape_string($con ,$columnData[6]);
+			 $import_data[]="('".$option_one."','".$option_two."''".$option_three."','".$option_four."''".$option_five."','".$option_six."''".$option_seven."')";
 			// SQL Query to insert data into DataBase
 
 			 }
 			 $import_data = implode(",", $import_data);
-			 $query = "INSERT INTO Presentations VALUES  $import_data ;";
-			 $result = mysqli_query($connect ,$query);
+			 $query = "INSERT INTO Presentations VALUES($import_data);";
+			 $result = mysqli_query($con ,$query);
 			 $message .="Data imported successfully.";
 			 fclose($getdata);
 			}
@@ -92,7 +97,7 @@ if($error!=1)
 <fieldset class="form-group">
 	<div class="form-group">
 	<input type="file" name="fileToUpload" id="fileToUpload">
-	<label for="image upload" class="control-label"> <br> Only .csv file is allowed. <br> Make sure your CSV file has field names as its first row and that they match the order of the table's field names <br> (PID, dept, sessionNo, time, roomNum, advisor, pTitle)</label>
+	<label for="image upload" class="control-label"> <br> Only .csv file is allowed. <br> Make sure your CSV file does not have field names as its first row and that they match the order of the table's field names <br> (PID, dept, sessionNo, time, roomNum, advisor, pTitle)</label>
 	</div>
 	<div class="form-group">
     <input type="submit" class="btn btn-warning" value="Import Data" name="import">
