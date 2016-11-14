@@ -50,7 +50,7 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 
 			 }
 			 $import_data = implode(",", $import_data);
-			 $query = "INSERT INTO option_data_master(option_name,option_value) VALUES  $import_data ;";
+			 $query = "INSERT INTO Presentations VALUES  $import_data ;";
 			 $result = mysqli_query($connect ,$query);
 			 $message .="Data imported successfully.";
 			 fclose($getdata);
