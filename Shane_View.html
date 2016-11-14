@@ -28,7 +28,12 @@ a{
 <button class=" button button1" style=" height: 70px; vertical-align:middle"><span><a href="detailed1.html">Detailed Score Reports</a></span></button>
 <br/>
 <br/>
-<button class="button2 button" style="vertical-align:middle"><span>Upload a File</a></span></button>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+	<button class="button2 button" style="vertical-align:middle">
+		<input id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> 
+	</button>
+	<input type="submit"/>
+</form>
 
 </div>
 
