@@ -8,7 +8,7 @@
     error_reporting(E_ALL);
 
     $txt_file    = file_get_contents('db.txt');
-    $row_data = explode('^', $data);
+    $row_data = explode('^', $txt_file);
 
     $db_host = $row_data[0];
     $db_user = $row_data[1];
