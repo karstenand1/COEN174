@@ -312,7 +312,7 @@
      <input type="hidden" id="teamhidden" name="team" >
      <input type="hidden" id="advisorhidden" name="advisor" >
      <input type="hidden" id="PID" name="PID" >
-     <input type="submit" value="Confirm Submit">
+     <input type="submit" value="Continue">
    </div>
  </form>
 </div>
