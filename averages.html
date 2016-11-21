@@ -8,46 +8,46 @@
   <meta name="description" content="Judge Eval Form page 1">
   <meta name="author" content="Group 1">
 
-        <link rel="stylesheet" type="text/css" href="formstyle.css">
-  </head>
+  <link rel="stylesheet" type="text/css" href="formstyle.css">
+</head>
 
-  <body>
+<body>
   <div id="topbar">
-        <form action="getEverything.php" method="post" enctype="multipart/form-data">
-           <input class="button2 button" style="float:right; position:absolute; right:120px;" type="submit" value="Download Comprehensive Report" />
-        </form>
-    <h2>SCU Senior Design Conference </h2>
-    <h1>Summary Report</h1>
-        <button class=" button button1" style="width:70px; float: right; position: absolute; right: 20px; top: 10px; vertical-align:middle"><a style="text-decoration:none"  href="login.html">Logout</a></button>
+    <form action="getEverything.php" method="post" enctype="multipart/form-data">
+     <input class="button2 button" style="float:right; position:absolute; right:120px;" type="submit" value="Download Comprehensive Report" />
+   </form>
+   <h2>SCU Senior Design Conference </h2>
+   <h1>Summary Report</h1>
+   <a class="button button1 shanebutton" style="width:70px; float: right; position: absolute; right: 20px; top: 10px; padding:5px; height:auto;  text-decoration: none;" href="login.html">Logout</a>
 
-  </div>
-<div class="clearfix"></div>
+ </div>
+ <div class="clearfix"></div>
 
-    <div id="report">
-    </div>
+ <div id="report">
+ </div>
 
-    <script src="geturl.js"></script>
+ <script src="geturl.js"></script>
 
-    <script>
+ <script>
 
-     $.ajax({
-      type:'GET',
-      url:'getAvg.php',
-      dataType:'json',
-      success: function(response){
-        console.log(response);
-          document.getElementById('report').innerHTML=displayReport(response);
-      }
-    });
+   $.ajax({
+    type:'GET',
+    url:'getAvg.php',
+    dataType:'json',
+    success: function(response){
+      console.log(response);
+      document.getElementById('report').innerHTML=displayReport(response);
+    }
+  });
 
-     function displayReport(data){
-      var html="";
-      var header= "<table class=\"avgtables\"><tr><th>"+ data[0].dept + " " + data[0].sessionNo+ "</th><th> Number of Judges</th><th>Average Total Score</th>";
-      
-      html= html+ header + "</tr>";
-      prevSession=data[0].dept+data[0].sessionNo;
+   function displayReport(data){
+    var html="";
+    var header= "<table class=\"avgtables\"><tr><th>"+ data[0].dept + " " + data[0].sessionNo+ "</th><th> Number of Judges</th><th>Average Total Score</th>";
 
-     $.each(data, function(index, element) {
+    html= html+ header + "</tr>";
+    prevSession=data[0].dept+data[0].sessionNo;
+
+    $.each(data, function(index, element) {
       if (prevSession!=(element.dept+element.sessionNo)){
         html+="</table><br/>"+"<table class=\"avgtables\"><tr><th>"+ element.dept + " " + element.sessionNo+ "</th><th>Judges</th><th>Average Total Score</th>";;
         prevSession=element.dept+element.sessionNo;
@@ -56,15 +56,15 @@
       html=html.concat(line, "\n");
       console.log(html);
     })
-      
-     html=html+"</table>";
 
-     return html;
+    html=html+"</table>";
 
-   }
+    return html;
+
+  }
 
 
- </script>
+</script>
 
 </body>
 </html>

@@ -17,20 +17,23 @@ a{
   <div id="topbar">
     <h2>SCU Senior Design Conference </h2>
     <h1>Administrator Portal</h1>
-    <button class=" button button1" style="width:70px; float: right; position: absolute; right: 20px; top: 10px; vertical-align:middle"><a href="login.html">Logout</a></button>
+    <a class="button button1 shanebutton" style="width:70px; float: right; position: absolute; right: 20px; top: 10px; padding:5px; height:auto;" href="login.html">Logout</a>
+
 
   </div>
 
 <div align="center">
+<div class="spacer"></div>
 
-
-<button class="button button1" style=" height: 70px; vertical-align:middle"><span><a href="averages.html">Summary Score Report</a></span></button>
+<a class="button button1 shanebutton" href="averages.html">Summary Score Report</a>
 <br/>
+<div class="spacer"></div>
 <br/>
-<button class=" button button1" style=" height: 70px; vertical-align:middle"><span><a href="detailed1.html">Detailed Score Reports</a></span></button>
+<a class="button button1 shanebutton"href="detailed1.html">Detailed Score Reports</a>
 <br/>
+<div class="spacer"></div>
 <br/>
-<button class=" button button1" id="upbutton" onclick="show()" style=" height: 70px; vertical-align:middle"><span>Upload Presentation Information</span></button>
+<a class=" button button1 shanebutton" id="upbutton" onclick="show()" style=" padding-right: 30px; padding-left:30px;">Upload Presentation Information</a>
 
 <form action="addCSV.php" method="post" enctype="multipart/form-data">
 	<div class="box" id="box" style="vertical-align:middle; display:none;">
