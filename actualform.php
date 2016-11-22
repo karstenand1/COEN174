@@ -318,7 +318,7 @@
 </div>
 
 <div class="footer">
-  <div>
+</div>
     <script src="geturl.js"></script>
 
     <script>

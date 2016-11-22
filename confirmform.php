@@ -1,12 +1,12 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <title>Judge Evaluation Form Confirmation</title>
-    <meta name="description" content="Judge Eval Form page 1">
-    <meta name="author" content="Group 1">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>Judge Evaluation Form Confirmation</title>
+  <meta name="description" content="Judge Eval Form page 1">
+  <meta name="author" content="Group 1">
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
@@ -128,7 +128,7 @@
             <td><p id="comments"><?php echo $_POST['comments']; ?></p></td>
 
           </tr>
-        
+
         </table>
 
       </div>
@@ -139,20 +139,38 @@
         <br/>
         <h3 id="success" style="display:none"> 
           Submit Successful <br/>
-          <a href="form.html" class="button">Go back to Home Form</a> 
-        </h3>
+         </h3>
+          <br/>
+          <br/>
+          <form  method="post" style="display:none;  background: #FFE3C4; padding: 10px;" id="presentations" action="actualform.php">
+            <span class="bold"> Evaluate Another Presentation:</span> 
+            <select required id="projects" name="project" autocomplete="off">
+
+            </select>
+               <input type="hidden" id= "jIDhidden" name="jID" >
+               <input type="hidden" id="jNamehidden" name="judgeName" >
+               <input type="hidden" id= "sessionhidden" name="session" >
+               <input type="hidden" id="roomhidden" name="room" >
+
+            
+            <br/>
+            <input type="submit" value="Continue to Form">
+          </form>
+
+         <h3> <a href="form.html" class="button">Log out</a> </h3>
+    
       </div>
     </div>
 
-      <p id="PID" style="display:none;"><?php echo $_POST['PID']; ?></p>
-      <p id="C1" style="display:none;"><?php echo $_POST['C1']; ?></p>
-      <p id="C2" style="display:none;"><?php echo $_POST['C2']; ?></p>
-      <p id="C3" style="display:none;"><?php echo $_POST['C3']; ?></p>
-      <p id="C4" style="display:none;"><?php echo $_POST['C4']; ?></p>
-      <p id="C5" style="display:none;"><?php echo $_POST['C5']; ?></p>
-      <p id="C6" style="display:none;"><?php echo $_POST['C6']; ?></p>
-      <p id="C7" style="display:none;"><?php echo $_POST['C7']; ?></p>
-      <p id="C8" style="display:none;"><?php echo $_POST['C8']; ?></p> 
+    <p id="PID" style="display:none;"><?php echo $_POST['PID']; ?></p>
+    <p id="C1" style="display:none;"><?php echo $_POST['C1']; ?></p>
+    <p id="C2" style="display:none;"><?php echo $_POST['C2']; ?></p>
+    <p id="C3" style="display:none;"><?php echo $_POST['C3']; ?></p>
+    <p id="C4" style="display:none;"><?php echo $_POST['C4']; ?></p>
+    <p id="C5" style="display:none;"><?php echo $_POST['C5']; ?></p>
+    <p id="C6" style="display:none;"><?php echo $_POST['C6']; ?></p>
+    <p id="C7" style="display:none;"><?php echo $_POST['C7']; ?></p>
+    <p id="C8" style="display:none;"><?php echo $_POST['C8']; ?></p> 
 
 
     <script src="geturl.js"></script>
@@ -188,92 +206,143 @@
       console.log(DP1);
 
       presScores={'DP1':DP1,
-                  'DP2':DP2,
-                  'DP3':DP3,
-                  'DP4':DP4,
-                  'DP5':DP5,
-                  'DP6':DP6,
-                  'DP7':DP7,
-                  'DP8':DP8,
-                  'P1':P1,
-                  'P2':P2,
-                  'P3':P3,
-                  'P4':P4,
-                  'C1':C1,
-                  'C2':C2,
-                  'C3':C3,
-                  'C4':C4,
-                  'C5':C5,
-                  'C6':C6,
-                  'C7':C7,
-                  'C8':C8,
-                  'PID': document.getElementById("PID").innerHTML,
-                  'judgeId': document.getElementById("jID").innerHTML ,
-                  'judgeName':document.getElementById("jName").innerHTML ,
-                  'comments': document.getElementById("comments").innerHTML.replace('\'','\'\'')
+      'DP2':DP2,
+      'DP3':DP3,
+      'DP4':DP4,
+      'DP5':DP5,
+      'DP6':DP6,
+      'DP7':DP7,
+      'DP8':DP8,
+      'P1':P1,
+      'P2':P2,
+      'P3':P3,
+      'P4':P4,
+      'C1':C1,
+      'C2':C2,
+      'C3':C3,
+      'C4':C4,
+      'C5':C5,
+      'C6':C6,
+      'C7':C7,
+      'C8':C8,
+      'PID': document.getElementById("PID").innerHTML,
+      'judgeId': document.getElementById("jID").innerHTML ,
+      'judgeName':document.getElementById("jName").innerHTML ,
+      'comments': document.getElementById("comments").innerHTML.replace('\'','\'\'')
     };
     console.log(presScores)
 
     
-      var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
-      $.each(cons, function(index, element) {
-        if (presScores[element]!="1") {
-          presScores[element]= 0;
+    var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
+    $.each(cons, function(index, element) {
+      if (presScores[element]!="1") {
+        presScores[element]= 0;
+      }
+    })
+
+    console.log(presScores);
+    considers="";
+
+    for (var key in presScores) {
+      if (presScores.hasOwnProperty(key)) {
+        if (document.getElementById(key)){
+          document.getElementById(key).innerHTML=presScores[key];
         }
-      })
+        if (cons.indexOf(key)!=-1){
 
-      console.log(presScores);
-      considers="";
-
-      for (var key in presScores) {
-        if (presScores.hasOwnProperty(key)) {
-          if (document.getElementById(key)){
-            document.getElementById(key).innerHTML=presScores[key];
+          if (presScores[key]!=0){
+            considers+=formMap[key]+ ", ";
           }
-          if (cons.indexOf(key)!=-1){
+        }             
 
-            if (presScores[key]!=0){
-              considers+=formMap[key]+ ", ";
-            }
-          }             
+      }
 
+    }
+
+    if (considers.length>2){
+      document.getElementById("consider").innerHTML=considers.substring(0, considers.length-2);
+    }
+    else{
+      document.getElementById("consider").innerHTML=considers;
+    }
+
+    //get next presentation
+  
+
+    function sendScores(){
+      $.ajax({
+        type:'POST',
+        url:'addScore.php',
+        data:presScores,
+        success: function(response){
+          console.log(response)
+          document.getElementById("sendbutton").style="display:none;";
+
+          document.getElementById('success').style= "display:inline";
+
+          document.getElementById('presentations').style= "display:inline";
+
+          document.getElementById('jIDhidden').value= document.getElementById("jID").innerHTML ;
+           document.getElementById('jNamehidden').value= document.getElementById("jName").innerHTML;
+           // document.getElementById('sessionhidden').value= document.getElementById("session").innerHTML;
+           // document.getElementById('roomhidden').value= document.getElementById("room").innerHTML;
+
+
+            var ds= document.getElementById("session").innerHTML.split('-');
+            var dept=ds[0];
+            var session=ds[1];
+
+            getPresentations(dept,session);
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+         alert("some error");
+       }
+     });
+    }
+
+
+
+    function getPresentations(dept, sess){
+      $.ajax({
+        type:'GET',
+        url:'getPres.php',
+        data:{department:dept, session: sess},
+        dataType:'json',
+        success: function(response){
+          console.log(response)     
+          if (response.length>0)  {   
+
+            document.getElementById('presentations').style= "display:inline-block; background: #FFE3C4; padding: 10px;";
+
+
+            document.getElementById('room').innerHTML= response[0].roomNum;
+            document.getElementById('projects').innerHTML=populateList(response);
+
+            document.getElementById('sessionhidden').value= dept + "-" + sess;
+            document.getElementById('roomhidden').value= response[0].roomNum;
+          }
+
+          else{
+            document.getElementById('nopres').style='display:inline';
+          }
         }
+      });
+    }
 
-      }
-      
-      if (considers.length>2){
-        document.getElementById("consider").innerHTML=considers.substring(0, considers.length-2);
-      }
-      else{
-        document.getElementById("consider").innerHTML=considers;
-      }
+    function populateList(list){
+      console.log("populating")
+      var option="";
+      $.each(list, function(index, element) {
+        var proj= element.pTitle +"-"+ element.PID;
+        var line=["<option value=\"", proj, "\">",proj,"</option>"].join(" ");
+        option=option.concat(line, "\n");
+      })
+      return option;
+    }
 
 
-      // $('sendbutton').on('click', function() {
-      //   $(this).prop('disabled', true);
-      //    document.getElementById("sendbutton").style="display:none;";
+  </script>
 
-      // });
-
-      function sendScores(){
-        $.ajax({
-          type:'POST',
-          url:'addScore.php',
-          data:presScores,
-          success: function(response){
-            console.log(response)
-            document.getElementById("sendbutton").style="display:none;";
-
-            document.getElementById('success').style= "display:inline";
-
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-           alert("some error");
-         }
-       });
-      }
-
-    </script>
-
-  </body>
-  </html>
+</body>
+</html>
