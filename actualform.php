@@ -342,6 +342,8 @@
      console.log(projlist);
 
      project=projlist[0];
+     document.getElementById('project').innerHTML=project;
+
      PID=$.trim(projlist[1]);
 
  // document.getElementById('jID').innerHTML= jID;

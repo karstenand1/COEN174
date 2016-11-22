@@ -35,7 +35,12 @@
       success: function(response){
         console.log(response)
         var pres={};
+        var order=[];
        $.each(response, function(index, element) {
+        if (order.indexOf(element.PID)==-1){
+                order.push(element.PID);
+              }
+        console.log(order);
         if (!(element.PID in pres))
           {
             console.log(element.PID)
@@ -47,16 +52,25 @@
         })
        console.log(pres)
 
-       var html="<table class=\"stripe\">"+ "<tr><th></th><th>Presentation</th><th>Advisor</th><th>Team</th></tr>";
-       for (var key in pres) {
-        if (pres.hasOwnProperty(key)) {
+       var html="<table class=\"stripe\">"+ "<tr><th></th><th>Advisor</th><th>Presentation</th><th>Team</th><th>Dept</th></tr>";
+       $.each(order, function(index,key){
           fullval= pres[key].PID+"-"+ pres[key].advisor+"-"+ pres[key].student;
 
-          line=["<tr><td><button class=\"clickbutton button1\" type=\"submit\" required name=\"PID\" value=\"", fullval, "\"> </button></td><td>", pres[key].pTitle,"</td><td>", pres[key].advisor, "</td><td>", pres[key].student, "</td>"].join(" ");
+          line=["<tr><td><button class=\"clickbutton button1\" type=\"submit\" required name=\"PID\" value=\"", fullval, "\"> </button></td><td>", pres[key].advisor,"</td><td>", pres[key].pTitle, "</td><td>", pres[key].student,"</td><td>" ,pres[key].dept, "</td>"].join(" ");
 
           html+=line;
-        }
-      }
+
+
+       })
+      //  for (var key in pres) {
+      //   if (pres.hasOwnProperty(key)) {
+      //     fullval= pres[key].PID+"-"+ pres[key].advisor+"-"+ pres[key].student;
+
+      //     line=["<tr><td><button class=\"clickbutton button1\" type=\"submit\" required name=\"PID\" value=\"", fullval, "\"> </button></td><td>", pres[key].pTitle,"</td><td>", pres[key].advisor, "</td><td>", pres[key].student, "</td>"].join(" ");
+
+      //     html+=line;
+      //   }
+      // }
       // var hiddenvals="<input type=\"hidden\" id=\"teamhidden\" name=\"team\" ><input type=\"hidden\" id=\"advisorhidden\" name=\"advisor\" >"
       document.getElementById('options').innerHTML=html+"</table> ";
 

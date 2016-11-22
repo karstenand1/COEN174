@@ -335,7 +335,7 @@
       var option="";
       $.each(list, function(index, element) {
         var proj= element.pTitle +"-"+ element.PID;
-        var line=["<option value=\"", proj, "\">",proj,"</option>"].join(" ");
+        var line=["<option value=\"", proj, "\">",element.pTitle,"</option>"].join(" ");
         option=option.concat(line, "\n");
       })
       return option;
