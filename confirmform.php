@@ -157,9 +157,13 @@
             
             <br/>
             <input type="submit" value="Continue to Form">
+            <br/>
+            <br/>
+            <br/>
+          <h3> <a href="form.html" class="button">Log out</a> </h3>
+
           </form>
 
-         <h3> <a href="form.html" class="button">Log out</a> </h3>
     
       </div>
     </div>

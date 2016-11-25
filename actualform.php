@@ -270,7 +270,6 @@
     <div class="clearfix"></div>
     <br/>
 
-    <h2>Total Points: </h2>
     <p class="bold instruction">
       2) Please select each of the following considerations that were addressed by the presentation:
     </p>
