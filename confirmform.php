@@ -18,7 +18,7 @@
     <div id="topbar">
       <h1>Confirm Submit</h1>
     </div>
-
+<div id="formpage" style="display:none;">
     <div style="margin-right: auto; margin-left:auto; width:initial;">
       <table  style="float:center" class=" nobordertable displaydata">
         <tr>
@@ -112,8 +112,12 @@
         </tr>
       </table>
       <br/>
+      <h3 style="margin-top: 20px; float: right;width: 245px; word-wrap: normal;"> <p id="total"> </p></h3>
+
+      <div class="clearfix"></div>
+
       <div id="commentsection">
-        <table  class="stripe">
+        <table  class="stripe" style="width:100%">
           <tr>
             <th>Considerations</th>
           </tr>
@@ -126,11 +130,9 @@
           </tr>
           <tr>
             <td><p id="comments"><?php echo $_POST['comments']; ?></p></td>
-
           </tr>
 
         </table>
-
       </div>
       <div class="clearfix"></div>
 
@@ -171,8 +173,11 @@
     <p id="C6" style="display:none;"><?php echo $_POST['C6']; ?></p>
     <p id="C7" style="display:none;"><?php echo $_POST['C7']; ?></p>
     <p id="C8" style="display:none;"><?php echo $_POST['C8']; ?></p> 
+</div>
+<div id="redirect" style="display:none; ">
+         <h3> <a href="form.html" class="button">Invalid information- Return to log in page to enter judge ID and select a presentation</a> </h3>
 
-
+</div>
     <script src="geturl.js"></script>
 
     <script src="mappings.js"></script>
@@ -204,6 +209,11 @@
       var C8= document.getElementById("C8").innerHTML;
 
       console.log(DP1);
+      total= parseInt(DP1)+parseInt(DP2)+parseInt(DP3)+parseInt(DP4)+parseInt(DP5)+parseInt(DP6)+parseInt(DP7)+parseInt(DP8)+parseInt(P1)+parseInt(P2)+parseInt(P3)+parseInt(P4)
+      console.log(total)
+
+      document.getElementById("total").innerHTML="Total Score Sum: " + total;
+
 
       presScores={'DP1':DP1,
       'DP2':DP2,
@@ -232,7 +242,19 @@
     };
     console.log(presScores)
 
-    
+    var jID= document.getElementById("jID").innerHTML;
+     //redirect if no judge id
+     if (jID.includes("Undefined"))
+     {
+ document.getElementById('formpage').style= "display:none";
+ document.getElementById('redirect').style= "display:inline;text-align: center;";
+
+     }
+     else{
+       document.getElementById('formpage').style= "display:inline";
+
+     }
+
     var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
     $.each(cons, function(index, element) {
       if (presScores[element]!="1") {

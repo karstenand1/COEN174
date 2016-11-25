@@ -182,8 +182,8 @@ th, td {
   }
   #commentsection{
     margin-top: 20px;
-        float: right;
-    width: 245px;
+        /*float: right;*/
+    width: 100%;
     word-wrap: normal;
   }
   #commentsection table td,  #commentsection table th{

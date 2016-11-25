@@ -20,82 +20,83 @@
     <div id="topbar">
       <h1>Complete Evaluation </h1>
     </div>
-    <div style="margin-right: auto; margin-left:auto; width:initial;">
-      <table  style="float:center" class=" nobordertable displaydata">
-        <tr>
-          <td class=" leftcol ">Judge ID: </td>
-          <td class="  old" id= "jID"><?php echo $_POST['jID']; ?> </td>
+    <div id="formpage">
+      <div style="margin-right: auto; margin-left:auto; width:initial;">
+        <table  style="float:center" class=" nobordertable displaydata">
+          <tr>
+            <td class=" leftcol ">Judge ID: </td>
+            <td class="  old" id= "jID"><?php echo $_POST['jID']; ?> </td>
 
-          <td class="leftcol ">Session:</td>
-          <td class=" old" id="session"><?php echo $_POST['session']; ?></td>
+            <td class="leftcol ">Session:</td>
+            <td class=" old" id="session"><?php echo $_POST['session']; ?></td>
 
-          <td class="leftcol">Project Name:</td>
-          <td class="rightcol" id="project"> <?php echo $_POST['project']; ?></td>
+            <td class="leftcol">Project Name:</td>
+            <td class="rightcol" id="project"> <?php echo $_POST['project']; ?></td>
 
-          <td class="leftcol">Team Members:</td>
-          <td class="rightcol" id="members" style="max-width: 150px; "></td>
+            <td class="leftcol">Team Members:</td>
+            <td class="rightcol" id="members" style="max-width: 150px; "></td>
+          </tr>
+          <tr>
+            <td class="leftcol ">Judge Name:</td>
+            <td class=" old" id="jName"><?php echo $_POST['judgeName']; ?></td>
+
+            <td class="leftcol ">Room:</td>
+            <td class=" old" id="room"><?php echo $_POST['room']; ?></td>
+
+            <td class="leftcol">Advisor:</td>
+            <td class="rightcol" id="advisor"></td>
+            <td></td><td></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="formleft">
+        <p class="bold"> 1) Please evaluate the senior engineering design projects and presentations using the given point system: 
+        </p>
+
+        <table class="condense">
+
+          <tr> 
+            <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td><td>at the level of an entry-level engineer you would hire </td>
+          </tr>
+          <tr> 
+           <td class="leftcol">4</td> <td class="rightcol"> Good </td><td>at the level of an accomplished college senior</td>
+         </tr>
+         <tr> 
+          <td class="leftcol"> 3 </td><td class="rightcol"> Average </td><td>at the level typical of a college student</td>
         </tr>
         <tr>
-          <td class="leftcol ">Judge Name:</td>
-          <td class=" old" id="jName"><?php echo $_POST['judgeName']; ?></td>
-
-          <td class="leftcol ">Room:</td>
-          <td class=" old" id="room"><?php echo $_POST['room']; ?></td>
-
-          <td class="leftcol">Advisor:</td>
-          <td class="rightcol" id="advisor"></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-
-    </div>
-    <div class="clearfix"></div>
-
-    <div class="formleft">
-      <p class="bold"> 1) Please evaluate the senior engineering design projects and presentations using the given point system: 
-      </p>
-
-      <table class="condense">
-
-        <tr> 
-          <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td><td>at the level of an entry-level engineer you would hire </td>
-        </tr>
-        <tr> 
-         <td class="leftcol">4</td> <td class="rightcol"> Good </td><td>at the level of an accomplished college senior</td>
+         <td class="leftcol"> 2 </td><td class="rightcol"> Below Average </td><td>not up to the expectations of a college student</td>
        </tr>
        <tr> 
-        <td class="leftcol"> 3 </td><td class="rightcol"> Average </td><td>at the level typical of a college student</td>
+        <td class="leftcol"> 1</td><td class="rightcol">  Poor </td><td>significant errors or omission</td>
       </tr>
-      <tr>
-       <td class="leftcol"> 2 </td><td class="rightcol"> Below Average </td><td>not up to the expectations of a college student</td>
+      <tr> 
+        <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
+      </tr>
+    </table>
+    <table id="scroller" class="condense rightfollow">
+
+      <tr> 
+        <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td>
+      </tr>
+      <tr> 
+       <td class="leftcol">4</td> <td class="rightcol"> Good </td>
      </tr>
      <tr> 
-      <td class="leftcol"> 1</td><td class="rightcol">  Poor </td><td>significant errors or omission</td>
+      <td class="leftcol"> 3 </td><td class="rightcol"> Average </td>
     </tr>
-    <tr> 
-      <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
-    </tr>
-  </table>
-  <table id="scroller" class="condense rightfollow">
-
-    <tr> 
-      <td class="leftcol"> 5</td> <td class="rightcol"> Excellent </td>
-    </tr>
-    <tr> 
-     <td class="leftcol">4</td> <td class="rightcol"> Good </td>
+    <tr>
+     <td class="leftcol"> 2 </td><td class="rightcol"> Below Average </td>
    </tr>
    <tr> 
-    <td class="leftcol"> 3 </td><td class="rightcol"> Average </td>
+    <td class="leftcol"> 1</td><td class="rightcol">  Poor </td>
   </tr>
-  <tr>
-   <td class="leftcol"> 2 </td><td class="rightcol"> Below Average </td>
- </tr>
- <tr> 
-  <td class="leftcol"> 1</td><td class="rightcol">  Poor </td>
-</tr>
-<tr> 
-  <td class="leftcol"> N/A </td><td class="rightcol"> None Appropriate</td>
-</tr>
+  <tr> 
+    <td class="leftcol"> N/A </td><td class="rightcol"> None Appropriate</td>
+  </tr>
 </table>
 <br/>
  <!--  <table id="scroller" class="condense rightfollow">
@@ -316,15 +317,27 @@
    </div>
  </form>
 </div>
-
+</div>
 <div class="footer">
 </div>
-    <script src="geturl.js"></script>
+<div id="redirect" style="display:none; ">
+         <h3> <a href="form.html" class="button">Invalid information- Return to log in page to enter judge ID and select a presentation</a> </h3>
 
-    <script>
+</div>
+<script src="geturl.js"></script>
 
-     var jID = document.getElementById('jID').innerHTML.replace(/\s/g,'');
-     console.log(jID)
+<script>
+
+ var jID = document.getElementById('jID').innerHTML.replace(/\s/g,'');
+
+     //redirect if no judge id
+     if (jID.includes("Undefined"))
+     {
+ document.getElementById('formpage').style= "display:none";
+ document.getElementById('redirect').style= "display:inline;text-align: center;";
+
+     }
+
      var jName =document.getElementById('jName').innerHTML;
      var session = document.getElementById('session').innerHTML;
      var room = document.getElementById('room').innerHTML;
