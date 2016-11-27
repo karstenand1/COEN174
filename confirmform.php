@@ -157,13 +157,15 @@
             
             <br/>
             <input type="submit" value="Continue to Form">
-            <br/>
-            <br/>
-            <br/>
-          <h3> <a href="form.html" class="button">Log out</a> </h3>
 
+<br/>
           </form>
+          <br/>
+          <br/>
 
+          <h3 id="logoutbutton" style="display:none;"> <a href="form.html" class="button">Log out</a> </h3>
+          <br/>
+          <br/>
     
       </div>
     </div>
@@ -347,6 +349,7 @@
 
             document.getElementById('sessionhidden').value= dept + "-" + sess;
             document.getElementById('roomhidden').value= response[0].roomNum;
+            document.getElementById('logoutbutton').style="display:inline";
           }
 
           else{

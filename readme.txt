@@ -1,3 +1,5 @@
+==========  A) FILES  ==========
+
 Judge form files:
 1. form.html
 2. actualform.php
@@ -35,4 +37,33 @@ css files styling judge form and admin portal:
 1. appstyle.css
 2. formstyle.css
 
+==========  B) Set Up and Use ==========
 
+1. Transfer all files into webpages folder
+
+2. Go to judge form at /form.html
+
+---- Valid judges that are in pins.csv
+ID: KQ3R97RM	Name: Darren Atkinson	Dept: COEN
+ID: Q9W8E7R6	Name: Nathan Matsunaga	Dept: COEN
+
+3. Go to admin portal at /login.html
+---- pw: giveUsAnA
+
+==========  B) Configure ==========
+
+1. To add judges:
+- open pins.csv
+- col 1:  a unique 8 character ID
+- col 2:  First and Last name of judge
+- col 3:  4 letter code for department that judge will be in 
+
+COEN- Computer Engineering
+ELEN- Electrical Engineering
+MECH- Mechanical Engineering
+BIOE- Bioengineering
+CENG- Civil Engineering
+INTR- Interdisciplinary
+
+
+2. To load pre-session data: 

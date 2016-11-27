@@ -29,7 +29,11 @@
     </style> -->
     <link rel="stylesheet" type="text/css" href="formstyle.css">
     <!-- <link rel="stylesheet" type="text/css" href="appstyle.css"> -->
-
+<style>
+body{
+font-size: 14px;
+}
+</style>
   </head>
 
   <body>
@@ -81,9 +85,9 @@
     function displayReport(data){
       var html="";
       header="";
-      header+="<table style=\"table-layout:fixed; width:auto;\" class=\" stripe detailedtable\"><tr><th style=\"width:200px\"><u>"+ data[0].pTitle +"</u></th>"
+      header+="<table style=\"table-layout:fixed; width:auto;\" class=\" stripe detailedtable\"><tr><th style=\" font-size: 14px; width:200px\"><u>"+ data[0].pTitle +"</u></th>"
       $.each(data, function(index, element) {
-        line=["<th style=\"width:40px\">", noplus(element.judgeName) , "</th>"].join(" ");
+        line=["<th style=\"width:40px; font-size: 14px;\">", noplus(element.judgeName) , "</th>"].join(" ");
         header=header.concat(line, "\n");
       })
       
@@ -95,14 +99,14 @@
      for (var key in formMap) {
        row="<tr>"
        if (formMap.hasOwnProperty(key)) {
-         line=["<td>", formMap[key] , "</td>"].join(" ");
+         line=["<td style=\" font-size: 14px;\">", formMap[key] , "</td>"].join(" ");
 
          row=row+line+ "\n";
 
          if (cons.indexOf(key)!=-1){
           $.each(data, function(index, element) {
             if (element[key]=="1"){
-             line=["<td style=\"background-color:#A32638;\"> X </td>"].join(" ");
+             line=["<td style=\" font-size: 14px; background-color:#EE7674;\"> X </td>"].join(" ");
 
            }
            else{
@@ -126,11 +130,11 @@
         }
       }
 
-      comment="<tr><th style=\"width:200px; max-width:200px\">Judge</th><th >Comment</th></tr>";
+      comment="<tr><th style=\"width:200px; font-size: 14px; max-width:200px\">Judge</th><th  style=\"font-size: 14px;\">Comment</th></tr>";
       line="";
 
       $.each(data, function(index, element) {
-       line="<tr><td>"+ noplus(element.judgeName)+"</td>";
+       line="<tr><td style=\"font-size:14px;\">"+ noplus(element.judgeName)+"</td>";
 
        line+=["<td style=\"font-size:14px;\">", decodeURI(element["comment"]) , "</td>"].join(" ");
        comment=comment+line+"</tr>"
@@ -160,12 +164,12 @@
      team= decodeURIComponent(split[2]);
      // team= split[2].replace(("%2C"),", ");
      // team=team.replace(("%2C"),", ");
-     var html=  "<tr><td style=\"font-weight:bold;\" class=\"leftcol\"> Team Members: </td><td>" + team+ "</td>" ;
+     var html=  "<tr><td style=\"background-color:white;\"><input class=\"button2 button no-print\" style=\" margin:0px; margin-left:5px; visibility:hidden;\" type=button value=\"Print/PDF\"\"></td><td style=\"font-weight:bold;\" class=\"leftcol\"> Team Members: </td><td>" + team+ "</td>" ;
      count=1;
      var row="";
      for (var key in labels) {
        if (count%2==0){
-        row="<tr>"
+        row="<tr><td style=\"background-color:white; \"></td>"
       }
       else{
         row="";
