@@ -208,6 +208,13 @@ th, td {
 #presentations{
   font-size:20px;
 }
+
+#downloadbutton{
+  top:7px;
+}
+@media screen and (min-width:480px){
+
+}
 /*.detailedtable  th{
   width:200px;
   min-width: 40px;

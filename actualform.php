@@ -73,9 +73,6 @@
        <tr> 
         <td class="leftcol"> 1</td><td class="rightcol">  Poor </td><td>significant errors or omission</td>
       </tr>
-      <tr> 
-        <td class="leftcol"> N/A </td><td class="rightcol"> </td><td> if no appropriate score applies</td>
-      </tr>
     </table>
     <table id="scroller" class="condense rightfollow">
 
@@ -93,9 +90,6 @@
    </tr>
    <tr> 
     <td class="leftcol"> 1</td><td class="rightcol">  Poor </td>
-  </tr>
-  <tr> 
-    <td class="leftcol"> N/A </td><td class="rightcol"> None Appropriate</td>
   </tr>
 </table>
 <br/>

@@ -39,8 +39,8 @@
     <table id="info" class="nobordertable displaydata">
     </table>
 
-    <input class="button2 button no-print" style=" float: right; position: absolute; right: 180px; top: 80px;" type=button name=print value="Print/PDF" onClick="window.print()">
- <a class="button button1 shanebutton" style=" float: right; position: absolute; right: 20px; top: 0px; padding:5px; height:auto; text-decoration: none;" href="login.html">Logout</a>
+   
+ <a class="button button1 shanebutton no-print" style=" float: right; position: absolute; right: 20px; top: 0px; padding:5px; height:auto; text-decoration: none;" href="login.html">Logout</a>
 
     <div style="text-align: center">
     <h3 id="error" style="display:none"> No Scores to Report</h3>
@@ -148,7 +148,7 @@
 
     function displayInfo(info){
 
-     var labels={"Advisor":"advisor", "Department Session": "depSesh", "Room": "roomNum" }
+     var labels={"Advisor:":"advisor", "Department Session:": "depSesh", "Room:": "roomNum" }
 
      info["depSesh"]=info["dept"]+" "+ info["sessionNo"];
 
@@ -174,6 +174,9 @@
        line=["<td style=\"font-weight:bold;\" class=\"leftcol \">", key, "</td><td>", info[labels[key]] , "</td>"].join(" ");
        row=row.concat(line, "\n");
        html=html+row;
+       if (count==1){
+        html+= "<td style=\"background-color:white;\">"+"<input class=\"button2 button no-print\" style=\" margin:0px; margin-left:5px;\" type=button name=print value=\"Print/PDF\" onClick=\"window.print()\">"+"</td>"
+       }
        if (count%2!=0){
         row="</tr>";
       };
@@ -182,6 +185,7 @@
     }
     count+=1;
   }
+
   return html;
 
 }
