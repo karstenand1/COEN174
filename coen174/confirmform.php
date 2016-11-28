@@ -300,7 +300,7 @@
     function sendScores(){
       $.ajax({
         type:'POST',
-        url:'addScore.php',
+        url:'../php-cgi/addScore.php',
         data:presScores,
         success: function(response){
           console.log(response)
@@ -334,7 +334,7 @@
     function getPresentations(dept, sess){
       $.ajax({
         type:'GET',
-        url:'getPres.php',
+        url:'../php-cgi/getPres.php',
         data:{department:dept, session: sess},
         dataType:'json',
         success: function(response){

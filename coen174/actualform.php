@@ -370,7 +370,7 @@
 
  $.ajax({
   type:'GET',
-  url:'getStudents.php',
+  url:'../php-cgi/getStudents.php',
   data:{PID: PID},
   dataType:'json',
   success: function(response){

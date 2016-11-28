@@ -86,7 +86,7 @@
 
     		$.ajax({
     			type:'GET',
-    			url:'checkPin.php',
+    			url:'../php-cgi/checkPin.php',
     			data:{pin:pin, name:name},
     			dataType:'json',
     			success: function(response){
@@ -115,7 +115,7 @@
     	function getPresentations(dept, sess){
 	    	$.ajax({
 	          type:'GET',
-	          url:'getPres.php',
+	          url:'../php-cgi/getPres.php',
 	          data:{department:dept, session: sess},
 	          dataType:'json',
 	          success: function(response){

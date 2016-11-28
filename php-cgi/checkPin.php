@@ -8,7 +8,7 @@
 
 
 $found=FALSE;
-if (($handle = fopen("/DCNFS/users/web/pages/cle/COEN174/pins.csv", "r")) !== FALSE) {
+if (($handle = fopen("Uploads/pins.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       if($data[0]==$pin ){
         if(strtoupper($data[1])==$name){
