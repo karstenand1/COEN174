@@ -23,18 +23,23 @@ a{
   </div>
 
 <div align="center">
-<div class="spacer"></div>
-
+<h3> Reports</h3>
 <a class="button button1 shanebutton" href="averages.html">Summary Score Report</a>
 <br/>
 <div class="spacer"></div>
 <br/>
-<a class="button button1 shanebutton"href="detailed1.html">Detailed Score Reports</a>
+<a class="button button1 shanebutton" href="detailed1.html">Detailed Score Reports</a>
 <br/>
 <div class="spacer"></div>
 <br/>
-<a class=" button button1 shanebutton" id="upbutton" onclick="show()" style=" padding-right: 30px; padding-left:30px;">Upload Presentation Information</a>
+<div class="spacer"></div>
+<br/>
+<h3> Configuration</h3>
 
+<a class=" button button1 shanebutton" style=" padding-left:30px; padding-right:30px;" href="">Upload Presentation Information</a>
+<br/>
+<div class="spacer"></div>
+<!-- 
 <form action="addCSV.php" method="post" enctype="multipart/form-data">
 	<div class="box" id="box" style="vertical-align:middle; display:none;">
    Upload Presentation Information <br/> <br/>
@@ -43,28 +48,22 @@ a{
     <br/>
 
 	</div>
-</form>
-<br/>
-<br/>
-<br/>
-<!-- ADD PIN CSV -->
-<form action='addpin.php' method='POST' enctype='multipart/form-data' accept=".csv">
-  <input type='file' name='userFile'><br>
-  <input type='submit' name='upload_btn' value='upload'>
-</form>
+</form> -->
 
-<!-- sdfkjlskj;ajf;akl -->
+<br/>
+<a class=" button button1 shanebutton"  style=" padding-left:92px; padding-right:92px;" href="">Upload Judges</a>
+
 
 </div>
 
 <script>
 
-function show(){
-  console.log("hello")
-     document.getElementById('box').style= "display:inline-block";
-       document.getElementById('upbutton').style= "display:none";
+// function show(){
+//   console.log("hello")
+//      document.getElementById('box').style= "display:inline-block";
+//        document.getElementById('upbutton').style= "display:none";
+// }
 
-}
 </script>
 
 </body>
