@@ -98,7 +98,7 @@ ID: Q9W8E7R6	Name: Nathan Matsunaga	Dept: COEN
 ---- pw: password
 
 7. To log out of admin portal
----- close out of the browser
+---- clear history and close out of the browser 
 
 ==========  C) Admin Portal ==========
 
