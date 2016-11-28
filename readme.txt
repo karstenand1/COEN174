@@ -62,11 +62,11 @@ php files for gets and posts to mySQL:
 3. getStudents.php -- get students from a given presentation  
 4. checkPin.php -- check judge pins
 5. getAvg.php -- get summary score report
-6. getData.php 
-7. getDetRep.php 
-8. getDetRepSco.php
-9. getEverything.php
-10. getPres.php
+6. getData.php -- get student data
+7. getDetRep.php -- get data for detailed page 1
+8. getDetRepSco.php -- get text and numerical data per presentation
+9. getEverything.php -- get all numerical data
+10. getPres.php -- get presentations
 
 standalone helper js functions:
 1. mappings.js 
