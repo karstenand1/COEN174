@@ -47,30 +47,29 @@ Judge form files:
 3. confirmform.php -- confirmation page for evaluation form with submit
 
 csv file for judge pins:
-1. pins.csv -- wher judge ids are stored
+1. pins.csv -- where judge ids are stored
 
 Administrator portal files:
-1. login.html
-2. Shane_View.html
-3. averages.html
-4. detailed1.html
-5. detailed2.html
+1. login.html -- administrator login page 
+2. Shane_View.html -- administrator portal home page
+3. averages.html -- summary score reports
+4. detailed1.html -- detailed score report selection page
+5. detailed2.html -- detailed score report 
 
 php files for gets and posts to mySQL:
-1. addCSV.php
-2. addScore.php
-3. checkPass.php
-4. checkPin.php
-5. getAvg.php
-6. getData.php
-7. getDetRep.php
+1. addCSV.php  -- upload CSV to mySQL
+2. addScore.php -- add input scores to mySQL
+3. getStudents.php -- get students from a given presentation  
+4. checkPin.php -- check judge pins
+5. getAvg.php -- get summary score report
+6. getData.php 
+7. getDetRep.php 
 8. getDetRepSco.php
 9. getEverything.php
 10. getPres.php
-11. getStudents.php
 
 standalone helper js functions:
-1. mappings.js
+1. mappings.js 
 2. geturl.js
 
 css files styling judge form and admin portal:
