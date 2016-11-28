@@ -29,7 +29,12 @@
     <html>
     <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../coen174/formstyle.css">
+
     <style>
+    body{
+        text-align: center;
+    }
       #btn{
         color:'white';
         background-color:#a5cea5;
@@ -41,6 +46,13 @@
     </style>
     </head>
     <body>
+
+  <div id="topbar">
+    <h2> Administrator Portal </h2>
+    <h1>Upload Judges CSV</h1>
+
+
+  </div>
 
     <div class="container" style="margin-top:20px; margin-bottom:20px;padding:10px;">
     <?php
@@ -57,8 +69,8 @@
 
     <form role="form" action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post" enctype="multipart/form-data">
     <fieldset class="form-group">
-    	<div class="form-group">
-    	<input type="file" name="fileToUpload" id="fileToUpload">
+    	<div class="form-group" style="text-align:center">
+    	<input type="file" name="fileToUpload" id="fileToUpload" style="margin-left:auto; margin-right:auto;">
     	<label for="image upload" class="control-label"> <br> Only .csv files are allowed. <br> </label>
     	</div>
     	<div class="form-group">

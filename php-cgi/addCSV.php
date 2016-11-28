@@ -133,6 +133,8 @@
     <html>
     <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../coen174/formstyle.css">
+
     <style>
       #btn{
         color:'white';
@@ -145,6 +147,11 @@
     </style>
     </head>
     <body>
+
+     <div id="topbar">
+    <h2> Administrator Portal </h2>
+    <h1>Upload Presentation Data</h1>
+  </div>
 
     <div class="container" style="margin-top:20px; margin-bottom:20px;padding:10px;">
     <?php
