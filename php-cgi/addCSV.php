@@ -44,19 +44,75 @@
     					  $columnData[$c] = $data[$c];
     					}
               $option_one = mysqli_real_escape_string($con ,$columnData[0]);
-       			 $option_two = mysqli_real_escape_string($con ,$columnData[1]);
+       			  $option_two = mysqli_real_escape_string($con ,$columnData[1]);
               $option_three = mysqli_real_escape_string($con ,$columnData[2]);
-       			 $option_four = mysqli_real_escape_string($con ,$columnData[3]);
+       			  $option_four = mysqli_real_escape_string($con ,$columnData[3]);
               $option_five= mysqli_real_escape_string($con ,$columnData[4]);
-       			 $option_six = mysqli_real_escape_string($con ,$columnData[5]);
+       			  $option_six = mysqli_real_escape_string($con ,$columnData[5]);
               $option_seven = mysqli_real_escape_string($con ,$columnData[6]);
-    			 $import_data[]="('".$option_one."','".$option_two."','".$option_three."','".$option_four."','".$option_five."','".$option_six."','".$option_seven."')";
-    			// SQL Query to insert data into DataBase
-
+              if ($fieldCount>=8){
+                $option_eight = mysqli_real_escape_string($con ,$columnData[7]);
+              }
+              if ($fieldCount>=9){
+         			  $option_nine = mysqli_real_escape_string($con ,$columnData[8]);
+              }
+              if ($fieldCount>=10){
+                $option_ten= mysqli_real_escape_string($con ,$columnData[9]);
+              }
+              if ($fieldCount>=11){
+         			  $option_eleven = mysqli_real_escape_string($con ,$columnData[10]);
+              }
+              if ($fieldCount>=12){
+                $option_twelve = mysqli_real_escape_string($con ,$columnData[11]);
+              }
+              $defined_vars = get_defined_vars();
+        			 $import_data[]="('".$option_one."','".$option_two."','".$option_three."','".$option_four."','".$option_five."','".$option_six."','".$option_seven."')";
+               if (array_key_exists('option_eight', $defined_vars)){
+                $import_stud1[]="('".$option_one."','".$option_eight."')";
+               }
+               if (array_key_exists('option_nine', $defined_vars)){
+                $import_stud2[]="('".$option_one."','".$option_nine."')";
+               }
+               if (array_key_exists('option_ten', $defined_vars)){
+                $import_stud3[]="('".$option_one."','".$option_ten."')";
+               }
+               if (array_key_exists('option_eleven', $defined_vars)){
+                $import_stud4[]="('".$option_one."','".$option_eleven."')";
+               }
+               if (array_key_exists('option_twelve', $defined_vars)){
+                $import_stud5[]="('".$option_one."','".$option_twelve."')";
+               }
+        			// SQL Query to insert data into DataBase
+              $defined_vars = get_defined_vars();
     			 }
     			 $import_data = implode(",", $import_data);
     			 $query = "INSERT INTO Presentations VALUES $import_data;";
     			 $result = mysqli_query($con ,$query);
+           if (array_key_exists('import_stud1', $defined_vars)){
+             $import_stud1 = implode(",", $import_stud1);
+             $query = "INSERT INTO Students VALUES $import_stud1;";
+      			 $result = mysqli_query($con ,$query);
+           }
+           if (array_key_exists('import_stud2', $defined_vars)){
+             $import_stud2 = implode(",", $import_stud2);
+             $query = "INSERT INTO Students VALUES $import_stud2;";
+      			 $result = mysqli_query($con ,$query);
+           }
+           if (array_key_exists('import_stud3', $defined_vars)){
+             $import_stud3 = implode(",", $import_stud3);
+             $query = "INSERT INTO Students VALUES $import_stud3;";
+      			 $result = mysqli_query($con ,$query);
+           }
+           if (array_key_exists('import_stud4', $defined_vars)){
+             $import_stud4 = implode(",", $import_stud4);
+             $query = "INSERT INTO Students VALUES $import_stud4;";
+      			 $result = mysqli_query($con ,$query);
+           }
+           if (array_key_exists('import_stud5', $defined_vars)){
+             $import_stud5 = implode(",", $import_stud5);
+             $query = "INSERT INTO Students VALUES $import_stud5;";
+      			 $result = mysqli_query($con ,$query);
+           }
     			 $message .="Data imported successfully.";
     			 fclose($getdata);
     			}

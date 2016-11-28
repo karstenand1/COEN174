@@ -38,6 +38,10 @@ Folder 3: php-cgi
 12. getStudents.php
 13. shane_view.php
 14. test.php
+15. addPin.php
+16. .htaccess
+17. Folder: Uploads
+Uploads 1. pins.csv
 
 ---------- File Descriptions ----------------
 
