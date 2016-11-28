@@ -1,0 +1,208 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>Detailed Score Report</title>
+  <meta name="description" content="Judge Eval Form page 1">
+  <meta name="author" content="Group 1">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+<!--     <style type="text/css">
+      table, td, th {
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        padding: 15px;
+        text-align: left;
+      }
+    </style> -->
+    <link rel="stylesheet" type="text/css" href="../formstyle.css">
+    <!-- <link rel="stylesheet" type="text/css" href="appstyle.css"> -->
+<style>
+body{
+font-size: 14px;
+}
+</style>
+  </head>
+
+  <body>
+    <div id="topbar">
+      <h1>Senior Design Detailed Score Report</h1>
+    </div>
+    <table id="info" class="nobordertable displaydata">
+    </table>
+
+
+    <div style="text-align: center">
+    <h3 id="error" style="display:none"> No Scores to Report</h3>
+</div>
+
+    <div style="margin-right:auto; margin-left: auto;width:90%" id="report">
+    </div>
+    <br/>
+    <table id="commentTable" class="stripe detailedtable ">
+    </table>
+
+    <script src="../geturl.js"></script>
+
+    <script src="../mappings.js"></script>
+
+    <script>
+
+     function getreport(pid){
+      $.ajax({
+        type:'GET',
+        url:'../../php-cgi/getDetRepSco.php',
+        data:{PID: pid},
+        dataType:'json',
+        success: function(response){
+          console.log(response);
+          if (response.length>0){
+                    document.getElementById('report').innerHTML=displayReport(response);
+                    document.getElementById('info').innerHTML=displayInfo(response[0]);
+                  }
+          else{
+               document.getElementById('error').style= "display:inline-block";
+
+          }
+        }
+      });
+    }
+
+    function displayReport(data){
+      var html="";
+      header="";
+      header+="<table style=\"table-layout:fixed; width:auto;\" class=\" stripe detailedtable\"><tr><th style=\" font-size: 14px; width:200px\"><u>"+ data[0].pTitle +"</u></th>"
+      $.each(data, function(index, element) {
+        line=["<th style=\"width:40px; font-size: 14px;\">", noplus(element.judgeName) , "</th>"].join(" ");
+        header=header.concat(line, "\n");
+      })
+
+      html= html+ header + "</tr>";
+     // console.log(html);
+     var cons= ['C1','C2','C3','C4','C5','C6','C7','C8']
+
+
+     for (var key in formMap) {
+       row="<tr>"
+       if (formMap.hasOwnProperty(key)) {
+         line=["<td style=\" font-size: 14px;\">", formMap[key] , "</td>"].join(" ");
+
+         row=row+line+ "\n";
+
+         if (cons.indexOf(key)!=-1){
+          $.each(data, function(index, element) {
+            if (element[key]=="1"){
+             line=["<td style=\" font-size: 14px; background-color:#EE7674;\"> X </td>"].join(" ");
+
+           }
+           else{
+             line=["<td></td>"].join(" ");
+
+           }
+           row=row.concat(line, "\n");
+         })
+        }
+
+        else{
+         $.each(data, function(index, element) {
+          line=["<td>", noplus(element[key]) , "</td>"].join(" ");
+          row=row.concat(line, "\n");
+        })
+       }
+       html=html+row+"</tr>";
+          // console.log(row);
+
+
+        }
+      }
+
+      comment="<tr><th style=\"width:200px; font-size: 14px; max-width:200px\">Judge</th><th  style=\"font-size: 14px;\">Comment</th></tr>";
+      line="";
+
+      $.each(data, function(index, element) {
+       line="<tr><td style=\"font-size:14px;\">"+ noplus(element.judgeName)+"</td>";
+
+       line+=["<td style=\"font-size:14px;\">", decodeURI(element["comment"]) , "</td>"].join(" ");
+       comment=comment+line+"</tr>"
+       console.log(comment ,"h", line)
+
+
+     })
+      console.log(comment)
+      document.getElementById('commentTable').innerHTML=comment;
+
+      html=html+"</table>";
+      return html;
+
+    }
+
+    function displayInfo(info){
+
+     var labels={"Advisor:":"advisor", "Department Session:": "depSesh", "Room:": "roomNum" }
+
+     info["depSesh"]=info["dept"]+" "+ info["sessionNo"];
+
+     var url = noplus(getUrlVars()["PID"]);
+     split= url.split("-")
+     console.log(split);
+     pid=split[0];
+     advisor=split[1];
+     team= decodeURIComponent(split[2]);
+     // team= split[2].replace(("%2C"),", ");
+     // team=team.replace(("%2C"),", ");
+     var html=  "<tr><td style=\"background-color:white;\"><input class=\"button2 button no-print\" style=\" margin:0px; margin-left:5px; visibility:hidden;\" type=button value=\"Print/PDF\"\"></td><td style=\"font-weight:bold;\" class=\"leftcol\"> Team Members: </td><td>" + team+ "</td>" ;
+     count=1;
+     var row="";
+     for (var key in labels) {
+       if (count%2==0){
+        row="<tr><td style=\"background-color:white; \"></td>"
+      }
+      else{
+        row="";
+      }
+      if (labels.hasOwnProperty(key)) {
+       line=["<td style=\"font-weight:bold;\" class=\"leftcol \">", key, "</td><td>", info[labels[key]] , "</td>"].join(" ");
+       row=row.concat(line, "\n");
+       html=html+row;
+       if (count==1){
+        html+= "<td style=\"background-color:white;\">"+"<input class=\"button2 button no-print\" style=\" margin:0px; margin-left:5px;\" type=button name=print value=\"Print/PDF\" onClick=\"window.print()\">"+"</td>"
+       }
+       if (count%2!=0){
+        row="</tr>";
+      };
+
+      console.log(html);
+    }
+    count+=1;
+  }
+
+  return html;
+
+}
+
+var url = noplus(getUrlVars()["PID"]);
+split= url.split("-")
+console.log(split);
+pid=split[0];
+
+getreport(pid);
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -29,7 +29,7 @@
       return;
       }
 
-    $sql = "SELECT * FROM Scores INNER JOIN Presentations ON Scores.PID=Presentations.PID";
+    $sql = "SELECT Scores.PID,judgeId,judgeName,DP1,DP2,DP3,DP4,DP5,DP6,DP7,DP8,P1,P2,P3,P4,C1,C2,C3,C4,C5,C6,C7,C8,dept,sessionNo,roomNum,advisor,pTitle FROM Scores INNER JOIN Presentations ON Scores.PID=Presentations.PID";
 
     // $sql = "SELECT * FROM Comments ORDER BY date_added DESC LIMIT 10";
 

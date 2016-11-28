@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>Summary Score Report</title>
+  <meta name="description" content="Judge Eval Form page 1">
+  <meta name="author" content="Group 1">
+
+  <link rel="stylesheet" type="text/css" href="../formstyle.css">
+</head>
+
+<body>
+  <div id="topbar">
+
+   <h2>SCU Senior Design Conference </h2>
+   <h1>Summary Report</h1>
+
+
+   <div id="topbuttons">
+   <form action="../../php-cgi/getEverything.php" method="post" enctype="multipart/form-data">
+     <input  id="downloadbutton" class="button2 button" style="float:left; position:absolute; left:20px;" type="submit" value="Download Comprehensive Report" />
+   </form>
+   </div>
+
+ </div>
+ <div class="clearfix"></div>
+
+ <div id="report">
+ </div>
+
+ <script src="../geturl.js"></script>
+
+ <script>
+
+   $.ajax({
+    type:'GET',
+    url:'../../php-cgi/getAvg.php',
+    dataType:'json',
+    success: function(response){
+      console.log(response);
+      document.getElementById('report').innerHTML=displayReport(response);
+    }
+  });
+
+   function displayReport(data){
+    var html="";
+    var header= "<table class=\"avgtables\"><tr><th>"+ data[0].dept + " " + data[0].sessionNo+ "</th><th> Number of Judges</th><th>Average Total Score</th>";
+
+    html= html+ header + "</tr>";
+    prevSession=data[0].dept+data[0].sessionNo;
+
+    $.each(data, function(index, element) {
+      if (prevSession!=(element.dept+element.sessionNo)){
+        html+="</table><br/>"+"<table class=\"avgtables\"><tr><th>"+ element.dept + " " + element.sessionNo+ "</th><th>Judges</th><th>Average Total Score</th>";;
+        prevSession=element.dept+element.sessionNo;
+      }
+      line=["<tr><td>", element.pTitle , "</td>","<td style=\"width:83px\">", element.judgeAmount , "</td>","<td style=\"width:157px\">", element.avgScore , "</td>" ].join(" ");
+      html=html.concat(line, "\n");
+      console.log(html);
+    })
+
+    html=html+"</table>";
+
+    return html;
+
+  }
+
+
+</script>
+
+</body>
+</html>

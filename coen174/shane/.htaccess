@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile /webpages/kanderse/coen174/shane/.htpasswd
+Require valid-user

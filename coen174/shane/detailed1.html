@@ -1,0 +1,112 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>Detailed Score Report</title>
+  <meta name="description" content="Judge Eval Form page 1">
+  <meta name="author" content="Group 1">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+        <link rel="stylesheet" type="text/css" href="../formstyle.css">
+  </head>
+
+  <body>
+  <div id="topbar">
+    <h2>SCU Senior Design Conference</h2><h1> Score Reports</h1>
+  </div>
+    <form id="options" action="detailed2.html">
+
+    </form>
+
+    <script src="../geturl.js"></script>
+    <script src="../mappings.js"></script>
+
+    <script>
+     $.ajax({
+      type:'GET',
+      url:'../../php-cgi/getDetRep.php',
+      dataType:'json',
+      success: function(response){
+        console.log(response)
+        var pres={};
+        var order=[];
+       $.each(response, function(index, element) {
+        if (order.indexOf(element.PID)==-1){
+                order.push(element.PID);
+              }
+        console.log(order);
+        if (!(element.PID in pres))
+          {
+            console.log(element.PID)
+            pres[element.PID]=element;
+          }
+        else{
+            pres[element.PID].student+= ", "+ element.student;
+          }
+        })
+       console.log(pres)
+
+       var html="<table class=\"stripe\">"+ "<tr><th></th><th>Advisor</th><th>Presentation</th><th>Team</th><th>Dept</th></tr>";
+       $.each(order, function(index,key){
+          fullval= pres[key].PID+"-"+ pres[key].advisor+"-"+ pres[key].student;
+
+          line=["<tr><td><button class=\"clickbutton button1\" type=\"submit\" required name=\"PID\" value=\"", fullval, "\"> </button></td><td>", pres[key].advisor,"</td><td>", pres[key].pTitle, "</td><td>", pres[key].student,"</td><td>" ,pres[key].dept, "</td>"].join(" ");
+
+          html+=line;
+
+
+       })
+      //  for (var key in pres) {
+      //   if (pres.hasOwnProperty(key)) {
+      //     fullval= pres[key].PID+"-"+ pres[key].advisor+"-"+ pres[key].student;
+
+      //     line=["<tr><td><button class=\"clickbutton button1\" type=\"submit\" required name=\"PID\" value=\"", fullval, "\"> </button></td><td>", pres[key].pTitle,"</td><td>", pres[key].advisor, "</td><td>", pres[key].student, "</td>"].join(" ");
+
+      //     html+=line;
+      //   }
+      // }
+      // var hiddenvals="<input type=\"hidden\" id=\"teamhidden\" name=\"team\" ><input type=\"hidden\" id=\"advisorhidden\" name=\"advisor\" >"
+      document.getElementById('options').innerHTML=html+"</table> ";
+
+
+
+     //    var html="";
+     //    var header= "<table><tr><th></th>"
+     //    $.each(data, function(index, element) {
+     //      line=["<th>", element.judgeName , "</th>"].join(" ");
+     //      header=header.concat(line, "\n");
+     //    })
+
+     //    html= html+ header + "</tr>";
+     //    console.log(html);
+
+
+     //    for (var key in formMap) {
+     //     row="<tr>"
+     //     if (formMap.hasOwnProperty(key)) {
+     //       line=["<td>", formMap[key] , "</td>"].join(" ");
+     //       row=row.concat(line, "\n");
+
+     //       $.each(data, function(index, element) {
+     //        line=["<td>", element[key] , "</td>"].join(" ");
+     //        row=row.concat(line, "\n");
+     //      })
+     //       html=html+row+"</tr>";
+     //       console.log(row);
+     //     }
+     //   }
+     //   html=html+"</table>"
+     //   return html;
+     // }
+
+}
+})
+   </script>
+
+ </body>
+ </html>
